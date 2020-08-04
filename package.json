@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "/WEB": "_____WEB_____",
+    "dev": "yarn --cwd packages/web dev",
+    "build": "yarn --cwd packages/web build",
+    "start": "yarn --cwd packages/web start",
+    "web": "yarn workspace @vjcspy/web",
+    "web:dev": "yarn web dev",
+
+    "/API": "_____API_____",
+    "api": "yarn workspace @vjcspy/api",
+    "api:dev": "yarn api start:dev"
+  }
+}
