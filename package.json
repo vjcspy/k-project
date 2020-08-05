@@ -4,15 +4,35 @@
     "packages/*"
   ],
   "scripts": {
-    "/WEB": "_____WEB_____",
+    "/WEB": "_______________________________WEB_______________________________",
     "dev": "yarn --cwd packages/web dev",
     "build": "yarn --cwd packages/web build",
     "start": "yarn --cwd packages/web start",
     "web": "yarn workspace @vjcspy/web",
-    "web:dev": "yarn web dev",
-
-    "/API": "_____API_____",
+    "w": "yarn web dev",
+    "/API": "_______________________________API_______________________________",
     "api": "yarn workspace @vjcspy/api",
-    "api:dev": "yarn api start:dev"
+    "a": "yarn api start:dev",
+    "/MODULES": "_______________________________MODULES_______________________________",
+    "web-ui": "yarn workspace @vjcspy/web-ui",
+    "web-hook": "yarn workspace @vjcspy/web-hook",
+    "module:build:web-ui": "yarn web-ui build",
+    "module:build:web-hook": "yarn web-hook build",
+    "m:b": "run-s module:build:*",
+    "m:f": "run-s fix:*",
+    "fix:web-ui": "yarn web-ui fix",
+    "fix:web-hook": "yarn web-hook fix"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "trash-cli": "^3.0.0",
+    "eslint": "7.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "typescript": "^3.5.3"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
