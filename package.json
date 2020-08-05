@@ -16,12 +16,15 @@
     "/MODULES": "_______________________________MODULES_______________________________",
     "web-ui": "yarn workspace @vjcspy/web-ui",
     "web-hook": "yarn workspace @vjcspy/web-hook",
+    "bar": "yarn workspace @vjcspy/bar",
     "module:build:web-ui": "yarn web-ui build",
     "module:build:web-hook": "yarn web-hook build",
+    "module:build:bar": "yarn bar build",
     "m:b": "run-s module:build:*",
-    "m:f": "run-s fix:*",
     "fix:web-ui": "yarn web-ui fix",
-    "fix:web-hook": "yarn web-hook fix"
+    "fix:web-hook": "yarn web-hook fix",
+    "fix:bar": "yarn bar fix",
+    "m:f": "run-s fix:*"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
