@@ -1,7 +1,7 @@
 import foo from '@vjcspy/foo';
 import React from 'react';
-import { double } from '@vjcspy/web-ui';
 import { bar } from '@vjcspy/bar';
+import { double, HOME } from '@vjcspy/web-ui';
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
       <pre>{foo}</pre>
       <pre>{double(2)}</pre>
       <pre>{bar()}</pre>
+      <HOME />
     </div>
   );
 }
