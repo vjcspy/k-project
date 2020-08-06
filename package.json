@@ -26,6 +26,9 @@
     "fix:bar": "yarn bar fix",
     "m:f": "run-s fix:*"
   },
+  "engines": {
+    "node": ">=10.22"
+  },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
