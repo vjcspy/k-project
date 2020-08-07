@@ -1,7 +1,7 @@
 {
-  "name": "@vjcspy/web-ui",
+  "name": "@vjcspy/web-chiaki",
   "version": "1.0.0",
-  "description": "Web UI",
+  "description": "Business logic, state management for web",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
@@ -22,32 +22,16 @@
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('web-ui must be installed with Yarn: https://yarnpkg.com/')\""
   },
   "engines": {
-    "node": ">=10.22"
+    "node": ">=10.16.3"
   },
-  "dependencies": {
-    "@apollo/client": "^3.1.3",
-    "@apollo/react-hooks": "^4.0.0",
-    "@magento/peregrine": "^7.0.0",
-    "@magento/venia-ui": "^4.0.0",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-cache-persist": "^0.1.1",
-    "apollo-link": "^1.2.14",
-    "graphql": "^15.3.0",
-    "graphql-tag": "^2.11.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.8.3",
-    "react-redux": "^7.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/react": "^16.9.44",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-redux": "^7.1.9",
-    "eslint": "^7.6.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "trash-cli": "^3.0.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
     "typescript": "^3.5.3"
   },
   "prettier": {

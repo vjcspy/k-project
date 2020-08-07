@@ -1,11 +1,11 @@
 {
-  "name": "@vjcspy/web-hook",
+  "name": "@vjcspy/chitility",
   "version": "1.0.0",
-  "description": "Web Hook",
+  "description": "Browser utility module",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/vjcspy/web-ui",
+  "repository": "https://github.com/vjcspy/chitility",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -22,16 +22,24 @@
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('web-ui must be installed with Yarn: https://yarnpkg.com/')\""
   },
   "engines": {
-    "node": ">=10.16.3"
+    "node": ">=10.22"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@adobe/apollo-link-mutation-queue": "^1.0.2",
+    "apollo-link": "^1.2.14",
+    "apollo-link-context": "^1.0.20",
+    "apollo-link-error": "^1.1.13",
+    "apollo-link-http": "^1.5.17",
+    "apollo-link-retry": "^2.2.16",
+    "graphql": "^15.3.0"
+  },
   "devDependencies": {
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.18.2",
-    "trash-cli": "^3.0.0",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "trash-cli": "^3.0.0",
     "typescript": "^3.5.3"
   },
   "prettier": {
