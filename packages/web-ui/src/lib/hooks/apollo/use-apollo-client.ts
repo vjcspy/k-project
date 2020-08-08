@@ -1,9 +1,10 @@
-import {ApolloClient} from '@apollo/client';
+import { ApolloClient } from '@apollo/client';
 import { cacheKeyFromType } from '@magento/venia-ui/lib/util/apolloCache';
 import { DefaultLink } from '@vjcspy/chitility';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { useEffect, useState } from 'react';
+import {WebUiApolloOptions} from '../../drivers';
 import { isSSR } from '../../util';
 
 /**
@@ -22,16 +23,26 @@ const preInstantiatedCache = new InMemoryCache({
   })
 });
 
-export const useApolloClient = (apolloOptions: {
-  apiBase: string;
-  apollo: { link?: any; client?: any; initialData?: any; cache?: any };
-}) => {
-  const [initClientCache, setInitClientCache] = useState(false);
+let apolloClient: any;
 
-  let apolloClient: any;
+/**
+ * Always creates a new apollo client on the server
+ * Creates or reuses apollo client in the browser.
+ * @param apolloOptions
+ * @returns {ApolloClient<any>}
+ */
+export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClient<any> => {
+  if(apolloOptions.apolloClient){
+    return apolloOptions.apolloClient;
+  }
 
-  const { apiBase, apollo = {} } = apolloOptions;
+  // Make sure to create a new client for every server-side request so that data
+  // isn't shared between connections (which would be bad)
+  if (!isSSR() && !!apolloClient) {
+    return apolloClient;
+  }
 
+  const { apiBase, ...apollo } = apolloOptions;
   const cache = apollo.cache || preInstantiatedCache;
   const link = apollo.link || DefaultLink(apiBase);
   const initialData = apollo.initialData || {};
@@ -40,15 +51,11 @@ export const useApolloClient = (apolloOptions: {
     data: initialData
   });
 
-  if (apollo.client) {
-    apolloClient = apollo.client;
-  } else {
-    apolloClient = new ApolloClient({
-      cache,
-      link
-    });
-    apolloClient.apiBase = apiBase;
-  }
+  apolloClient = new ApolloClient({
+    cache,
+    link
+  });
+  apolloClient.apiBase = apiBase;
 
   let persistor: CachePersistor<any>;
 
@@ -70,6 +77,21 @@ export const useApolloClient = (apolloOptions: {
     })
   );
 
+  return apolloClient;
+};
+
+/**
+ *
+ * @param apolloOptions
+ * @returns {[ApolloClient<any> & {persistor: any}, boolean]}
+ */
+export const useApolloClient = (apolloOptions: WebUiApolloOptions) => {
+  const [initClientCache, setInitClientCache] = useState(false);
+
+  const apolloClient: ApolloClient<any> = initApolloClient(apolloOptions);
+
+  let persistor = (apolloClient as any).persistor;
+
   useEffect(() => {
     async function initialize() {
       if (persistor) {
@@ -83,5 +105,5 @@ export const useApolloClient = (apolloOptions: {
     }
   }, [initClientCache]);
 
-  return [apolloClient, initClientCache];
+  return [apolloClient];
 };

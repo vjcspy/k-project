@@ -1,0 +1,22 @@
+overwrite: true
+#schema: "http://localhost:4000"
+documents: "src/graphql/**/*.graphql"
+generates:
+  src/graphql/generated/_generated-fragment-types.ts:
+    plugins:
+      - "fragment-matcher"
+  src/graphql/generated/_generated-types.ts:
+    plugins:
+      - add: "/** eslint-disable */\n/** AUTO GENERATED, DO NOT EDIT OVERHERE */"
+      - typescript
+      - typescript-operations
+  src/graphql/generated/_generated-hooks.tsx:
+    plugins:
+      - add: "/** eslint-disable */\n/** AUTO GENERATED, DO NOT EDIT OVERHERE */"
+      - "typescript"
+      - "typescript-react-apollo"
+      - "typescript-graphql-files-modules"
+      - "typescript-document-nodes"
+#  ./graphql.schema.json:
+#    plugins:
+#      - "introspection"

@@ -6,10 +6,10 @@
   "scripts": {
     "/WEB": "_______________________________WEB_______________________________",
     "dev": "yarn --cwd packages/web dev",
+    "debug": "yarn --cwd packages/web debug",
     "build": "yarn --cwd packages/web build",
     "start": "yarn --cwd packages/web start",
     "web": "yarn workspace @vjcspy/web",
-    "w": "yarn web dev",
     "/API": "_______________________________API_______________________________",
     "api": "yarn workspace @vjcspy/api",
     "a": "yarn api start:dev",
@@ -23,7 +23,10 @@
     "module:build:bar": "yarn bar build",
     "module:build:chitility": "yarn chitility build",
     "m:b": "run-s module:build:*",
-    "m:w": "run-p \"chitility watch\" \"web-ui watch\" --"
+    "m:w": "run-p \"chitility watch\" \"web-ui watch\" --",
+    "------ playground ------": "----------------------",
+    "outdated": "yarn outdated",
+    "upgrade": "yarn upgrade-interactive --latest"
   },
   "engines": {
     "node": ">=10.22"

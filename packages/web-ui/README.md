@@ -1,3 +1,3 @@
 # web-ui
 
-Web UI
+Web UI depended on NextJs and React also

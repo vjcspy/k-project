@@ -23,7 +23,13 @@
     "noEmit": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "types": [],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/types",
+      "node_modules/next/types"
+    ]
   },
   "exclude": [
     "node_modules",
