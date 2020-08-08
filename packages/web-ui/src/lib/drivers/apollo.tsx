@@ -24,10 +24,10 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
   const WithApollo: WebUiPage<any> = props => {
     const { apollo, ssrComplete, ...pageProps } = props;
 
-    const [apolloClient] = useApolloClient({ ...apollo, apiBase });
+    const [client] = useApolloClient({ ...apollo, apiBase });
 
     return (
-      <ApolloProvider client={apolloClient}>
+      <ApolloProvider client={client}>
         <PageComponent {...pageProps} />
       </ApolloProvider>
     );
@@ -50,7 +50,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
 
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProp`.
-      const apolloClient = initApolloClient(adapterProps.apollo!);
+      const client = initApolloClient(adapterProps.apollo!);
 
       // Run wrapped getInitialProps methods
       let pageProps = {};
@@ -75,7 +75,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
               <AppTree
                 pageProps={{
                   ...pageProps,
-                  apollo: { apolloClient }
+                  apollo: { client }
                 }}
               />
             );
@@ -93,7 +93,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
       }
 
       // Extract query data from the Apollo store
-      const initialData = apolloClient.cache.extract();
+      const initialData = client.cache.extract();
 
       return {
         ...pageProps,

@@ -9,7 +9,7 @@ export const RetryLinkWithDefaultBehavior = () => {
     },
     attempts: {
       max: 5,
-      retryIf: error => error && navigator.onLine
+      retryIf: error => error && (typeof navigator === 'undefined' || navigator.onLine)
     }
   });
 };

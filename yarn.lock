@@ -1332,6 +1332,14 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@graphql-codegen/add@^1.17.7":
+  version "1.17.7"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/add/-/add-1.17.7.tgz#ca070179400350909756ebd0fb10dc29ae235ccd"
+  integrity sha512-ER8mZmFRWIek6WO/4J8OPRkMjMQW0GSmHUzTgLJvbH/29RnQgyJNGBpliIebRfjyDiSvYbGrfutPK5tyPiXKUg==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.17.7"
+    tslib "~2.0.0"
+
 "@graphql-codegen/cli@^1.17.7":
   version "1.17.7"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/cli/-/cli-1.17.7.tgz#4ba45106403a3aca36585bf04f0169fda38ac9df"
@@ -1407,7 +1415,7 @@
     "@graphql-codegen/plugin-helpers" "1.17.7"
     tslib "~2.0.0"
 
-"@graphql-codegen/plugin-helpers@1.17.7":
+"@graphql-codegen/plugin-helpers@1.17.7", "@graphql-codegen/plugin-helpers@^1.17.7":
   version "1.17.7"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.17.7.tgz#5903105fda9470aafefe9da29e3a6fb3a52b8376"
   integrity sha512-LsXS0s/ZOACZXa3W29ekcaQLzP8TsYzow6nIjW6rtkWX5T0EDooBQbDn1cdLdlpenqbUU+vtONwR6Qqc6hrq2Q==
@@ -1423,6 +1431,23 @@
     pascal-case "3.1.1"
     tslib "~2.0.0"
     upper-case "2.0.1"
+
+"@graphql-codegen/schema-ast@^1.17.7":
+  version "1.17.7"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.17.7.tgz#f24bd0ca6861d09d49b68f96d0198dbab8f9723e"
+  integrity sha512-fQbp8Fz0KruoZ2aTtBpk3wBUJMsSUBmRQq201eQyt+ANUIY7PoSAGIlOKgze0JRwhlU6zN8mIS95RFzDyJUPkg==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.17.7"
+    "@graphql-tools/utils" "^6.0.0"
+    tslib "~2.0.0"
+
+"@graphql-codegen/time@^1.17.7":
+  version "1.17.10"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/time/-/time-1.17.10.tgz#eea999d08b8918074721d51ddf97aecf9470c783"
+  integrity sha512-U0Hg01Ixu3/oYdUzZGKst6n/bS+k2UxsOzGnwmxnNxFZRIDQ3FUo5NOZJ1CWfIFBVcX/NCXqUX2HFgV+wT6MLQ==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.17.7"
+    moment "~2.27.0"
 
 "@graphql-codegen/typescript-document-nodes@^1.17.7":
   version "1.17.7"
@@ -8369,6 +8394,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+moment@~2.27.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
+  integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
 
 mount-point@^3.0.0:
   version "3.0.0"

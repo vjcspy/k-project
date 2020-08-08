@@ -1,10 +1,10 @@
 import { ApolloClient } from '@apollo/client';
 import { cacheKeyFromType } from '@magento/venia-ui/lib/util/apolloCache';
-import { DefaultLink } from '@vjcspy/chitility';
+import {DefaultLink} from '@vjcspy/chitility';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { useEffect, useState } from 'react';
-import {WebUiApolloOptions} from '../../drivers';
+import { WebUiApolloOptions } from '../../drivers';
 import { isSSR } from '../../util';
 
 /**
@@ -32,8 +32,8 @@ let apolloClient: any;
  * @returns {ApolloClient<any>}
  */
 export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClient<any> => {
-  if(apolloOptions.apolloClient){
-    return apolloOptions.apolloClient;
+  if (apolloOptions.client) {
+    return apolloOptions.client;
   }
 
   // Make sure to create a new client for every server-side request so that data
@@ -88,9 +88,9 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
 export const useApolloClient = (apolloOptions: WebUiApolloOptions) => {
   const [initClientCache, setInitClientCache] = useState(false);
 
-  const apolloClient: ApolloClient<any> = initApolloClient(apolloOptions);
+  const client: ApolloClient<any> = initApolloClient(apolloOptions);
 
-  let persistor = (apolloClient as any).persistor;
+  let persistor = (client as any).persistor;
 
   useEffect(() => {
     async function initialize() {
@@ -105,5 +105,5 @@ export const useApolloClient = (apolloOptions: WebUiApolloOptions) => {
     }
   }, [initClientCache]);
 
-  return [apolloClient];
+  return [client];
 };

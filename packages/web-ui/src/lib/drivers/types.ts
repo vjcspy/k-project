@@ -10,7 +10,7 @@ export type WebUiAdapterOptions = {
 export type WebUiApolloOptions = {
   apiBase: string;
   link?: any;
-  apolloClient?: any;
+  client?: any;
   initialData?: any;
   cache?: any;
 };
