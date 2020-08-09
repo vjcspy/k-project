@@ -1,11 +1,18 @@
 import { ApolloClient } from '@apollo/client';
 import { cacheKeyFromType } from '@magento/venia-ui/lib/util/apolloCache';
-import {DefaultLink} from '@vjcspy/chitility';
+import { DefaultLink } from '@vjcspy/chitility';
+import { ApolloCache } from 'apollo-cache';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { useEffect, useState } from 'react';
 import { WebUiApolloOptions } from '../../drivers';
 import { isSSR } from '../../util';
+import fetch from 'isomorphic-unfetch';
+
+// Polyfill fetch() on the server (used by apollo-client)
+if (isSSR()) {
+  global.fetch = fetch;
+}
 
 /**
  * To improve initial load time, create an apollo cache object as soon as
@@ -14,11 +21,10 @@ import { isSSR } from '../../util';
  *
  * @see https://www.npmjs.com/package/apollo-cache-inmemory
  */
-
 const preInstantiatedCache = new InMemoryCache({
   dataIdFromObject: cacheKeyFromType,
   fragmentMatcher: new IntrospectionFragmentMatcher({
-    // UNION_AND_INTERFACE_TYPES is injected into the bundle by webpack at build time.
+    // TODO: need to fix
     // introspectionQueryResultData: UNION_AND_INTERFACE_TYPES
   })
 });
@@ -43,15 +49,14 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
   }
 
   const { apiBase, ...apollo } = apolloOptions;
-  const cache = apollo.cache || preInstantiatedCache;
+  const cache: ApolloCache<any> | any = apollo.cache || preInstantiatedCache;
   const link = apollo.link || DefaultLink(apiBase);
   const initialData = apollo.initialData || {};
 
-  cache.writeData({
-    data: initialData
-  });
+  cache.restore(initialData);
 
   apolloClient = new ApolloClient({
+    ssrMode: isSSR(),
     cache,
     link
   });
@@ -71,11 +76,7 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
     apolloClient.persistor = persistor;
   }
 
-  apolloClient.onResetStore(async () =>
-    cache.writeData({
-      data: initialData
-    })
-  );
+  apolloClient.onResetStore(async () => cache.restore(initialData));
 
   return apolloClient;
 };

@@ -1,10 +1,10 @@
 import { useCategoryListQuery } from '../../graphql/generated/_generated-hooks';
 import * as React from 'react';
 
-export const HomeWebUi = () => {
+export const HomeWebUi = (props: { id: number }) => {
   const { data, loading } = useCategoryListQuery({
     variables: {
-      id: 2
+      id: props.id
     },
     ssr: true
   });
@@ -12,7 +12,7 @@ export const HomeWebUi = () => {
   return (
     <>
       {loading && null}
-      {data ? <div>{JSON.stringify(data, null, '\t')}</div> : null}
+      {data ? <pre>{JSON.stringify(data, null, '\t')}</pre> : null}
     </>
   );
 };

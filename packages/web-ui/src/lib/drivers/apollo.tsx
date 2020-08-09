@@ -1,9 +1,9 @@
 import React from 'react';
-import { initApolloClient, useApolloClient } from '../hooks/apollo';
 import { ApolloProvider } from '@apollo/client';
 import Head from 'next/head';
 import { WebUiAdapterOptions, WebUiPage } from './types';
 import { isSSR } from '../util';
+import { initApolloClient, useApolloClient } from '../hooks/apollo/use-apollo-client';
 
 /**
  *
@@ -46,8 +46,6 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
 
   if (ssr || PageComponent.getInitialProps) {
     WithApollo.getInitialProps = async ctx => {
-      const { AppTree } = ctx;
-
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProp`.
       const client = initApolloClient(adapterProps.apollo!);
@@ -72,7 +70,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
             // Run all GraphQL queries
             const { getDataFromTree } = await import('@apollo/react-ssr');
             await getDataFromTree(
-              <AppTree
+              <ctx.AppTree
                 pageProps={{
                   ...pageProps,
                   apollo: { client }
@@ -94,7 +92,6 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
 
       // Extract query data from the Apollo store
       const initialData = client.cache.extract();
-
       return {
         ...pageProps,
         apollo: { initialData },
