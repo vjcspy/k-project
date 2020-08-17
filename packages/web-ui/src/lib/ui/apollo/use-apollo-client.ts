@@ -5,7 +5,7 @@ import { ApolloCache } from 'apollo-cache';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { useEffect, useState } from 'react';
-import { WebUiApolloOptions } from '../../drivers';
+import {WebUiApolloOptions} from '../../types';
 import { isSSR } from '../../util';
 import fetch from 'isomorphic-unfetch';
 

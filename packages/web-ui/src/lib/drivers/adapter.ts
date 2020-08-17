@@ -1,10 +1,17 @@
+import { NextPage } from 'next';
+import { WebUiAdapterOptions } from '../types';
 import { withApollo } from './apollo';
-import { WebUiAdapterOptions, WebUiPage } from './types';
+import { withUi } from './ui';
 
-export const withAdapter = (PageComponent: WebUiPage<any>, webUiAdapterOptions?: WebUiAdapterOptions) => {
-  let PageWithAdapter = PageComponent;
-  if (webUiAdapterOptions && webUiAdapterOptions.apollo) {
-    PageWithAdapter = withApollo(PageComponent, webUiAdapterOptions);
+export const withAdapter = (
+  PageComponent: NextPage<any>,
+  webUiAdapterOptions: WebUiAdapterOptions = {
+    ssr: true,
+    apollo: {
+      apiBase: process.env.NEXT_PUBLIC_APOLLO_API!
+    }
   }
-  return PageWithAdapter;
+) => {
+  console.log('here');
+  return withUi(withApollo(PageComponent, webUiAdapterOptions));
 };

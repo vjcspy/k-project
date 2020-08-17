@@ -1,9 +1,10 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import Head from 'next/head';
-import { WebUiAdapterOptions, WebUiPage } from './types';
 import { isSSR } from '../util';
-import { initApolloClient, useApolloClient } from '../hooks/apollo/use-apollo-client';
+import { initApolloClient, useApolloClient } from '../ui/apollo/use-apollo-client';
+import { WebUiAdapterOptions } from '../types';
+import { NextPage } from 'next';
 
 /**
  *
@@ -11,7 +12,8 @@ import { initApolloClient, useApolloClient } from '../hooks/apollo/use-apollo-cl
  * @param adapterProps
  * @returns {React.ReactElement<any, any> | null}
  */
-export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAdapterOptions) => {
+export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdapterOptions) => {
+  console.log('withApollo');
   const { apollo, ssr = true } = adapterProps;
   const apiBase = apollo!.apiBase;
 
@@ -21,7 +23,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
    * @returns {React.ElementType | null}
    * @constructor
    */
-  const WithApollo: WebUiPage<any> = props => {
+  const WithApollo: NextPage<any> = props => {
     const { apollo, ssrComplete, ...pageProps } = props;
 
     const [client] = useApolloClient({ ...apollo, apiBase });
@@ -35,7 +37,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
 
   // Set the correct displayName in development
   if (process.env.NODE_ENV !== 'production') {
-    const displayName = PageComponent.displayName || PageComponent.name || 'Component';
+    const displayName = PageComponent.displayName || PageComponent.name || 'PageComponent';
 
     if (displayName === 'App') {
       console.warn('This withApollo HOC only works with PageComponents.');
@@ -54,10 +56,12 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
       let pageProps = {};
       if (PageComponent.getInitialProps) {
         pageProps = await PageComponent.getInitialProps(ctx);
+        console.log(pageProps);
       }
 
       // Only on the server:
       if (isSSR()) {
+        console.log(3);
         // When redirecting, the response is finished.
         // No point in continuing to render
         if (ctx.res && ctx.res.writableEnded) {
@@ -92,6 +96,7 @@ export const withApollo = (PageComponent: WebUiPage<any>, adapterProps: WebUiAda
 
       // Extract query data from the Apollo store
       const initialData = client.cache.extract();
+      console.log(initialData);
       return {
         ...pageProps,
         apollo: { initialData },

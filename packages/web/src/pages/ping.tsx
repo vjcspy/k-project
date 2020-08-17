@@ -1,10 +1,12 @@
 import { NextPage } from 'next';
-import { withAdapter } from '@vjcspy/web-ui';
+import { WebUIContext, withAdapter } from '@vjcspy/web-ui';
+import React from 'react';
 
 const Ping: NextPage<{ request: any }> = props => {
   return (
     <div>
       <pre>{JSON.stringify(props.request, null, '\t')}</pre>
+      <WebUIContext.Consumer>{value => <pre>{JSON.stringify(value, null, '\t')}</pre>}</WebUIContext.Consumer>
     </div>
   );
 };

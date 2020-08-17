@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2017",
     "outDir": "build/main",
     "rootDir": "src",
     "declaration": true,
@@ -18,10 +18,10 @@
     // "alwaysStrict": true /* Parse in strict mode and emit "use strict" for each source file. */,
 
     /* Additional Checks */
-    "noUnusedLocals": false /* Report errors on unused locals. */,
-    "noUnusedParameters": false /* Report errors on unused parameters. */,
-    "noImplicitReturns": false /* Report error when not all code paths in function return a value. */,
-    "noFallthroughCasesInSwitch": false /* Report errors for fallthrough cases in switch statement. */,
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
 
     /* Debugging Options */
     "traceResolution": false /* Report module resolution log messages. */,
@@ -37,7 +37,7 @@
     "typeRoots": ["node_modules/@types", "src/types"],
     "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "importHelpers": true,
     "lib": [
@@ -52,7 +52,7 @@
     "resolveJsonModule": true,
     "isolatedModules": false
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }

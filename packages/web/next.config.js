@@ -3,7 +3,13 @@ const withPlugins = require('next-compose-plugins');
 
 // Tell webpack to compile the "bar" package, necessary if you're using the export statement for example
 // https://www.npmjs.com/package/next-transpile-modules
-const withTM = require('next-transpile-modules')(['bar', '@vjcspy/web-ui', '@magento/venia-ui']);
+const withTM = require('next-transpile-modules')([
+  'bar',
+  '@vjcspy/web-ui',
+  '@vjcspy/web-chiaki',
+  '@vjcspy/web-chitility',
+  '@magento/venia-ui'
+]);
 const withPWA = require('next-pwa');
 
 module.exports = withPlugins([

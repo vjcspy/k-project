@@ -24,14 +24,21 @@
   "engines": {
     "node": ">=10.16.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.20",
+    "moment": "^2.27.0",
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.18.2",
-    "trash-cli": "^3.0.0",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "trash-cli": "^3.0.0",
     "typescript": "^3.5.3"
   },
   "prettier": {
