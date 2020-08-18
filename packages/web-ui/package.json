@@ -20,7 +20,9 @@
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('web-ui must be installed with Yarn: https://yarnpkg.com/')\"",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "engines": {
     "node": ">=10.22"
@@ -47,6 +49,7 @@
     "react-redux": "^7.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
     "@graphql-codegen/add": "^1.17.7",
     "@graphql-codegen/cli": "^1.17.7",
     "@graphql-codegen/fragment-matcher": "^1.17.7",
@@ -58,15 +61,21 @@
     "@graphql-codegen/typescript-graphql-files-modules": "^1.17.7",
     "@graphql-codegen/typescript-operations": "^1.17.7",
     "@graphql-codegen/typescript-react-apollo": "^1.17.7",
+    "@storybook/addon-actions": "^6.0.12",
+    "@storybook/addon-essentials": "^6.0.12",
+    "@storybook/addon-links": "^6.0.12",
+    "@storybook/react": "^6.0.12",
+    "@types/lodash": "^4.14.159",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
-    "@types/lodash": "^4.14.159",
+    "babel-loader": "^8.1.0",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
+    "react-is": "^16.13.1",
     "trash-cli": "^3.0.0",
     "typescript": "^3.5.3"
   },
