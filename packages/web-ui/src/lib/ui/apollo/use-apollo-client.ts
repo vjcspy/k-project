@@ -5,7 +5,7 @@ import { ApolloCache } from 'apollo-cache';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { useEffect, useState } from 'react';
-import {WebUiApolloOptions} from '../../types';
+import { WebUiApolloOptions } from '../../types';
 import { isSSR } from '../../util';
 import fetch from 'isomorphic-unfetch';
 
@@ -51,9 +51,10 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
   const { apiBase, ...apollo } = apolloOptions;
   const cache: ApolloCache<any> | any = apollo.cache || preInstantiatedCache;
   const link = apollo.link || DefaultLink(apiBase);
-  const initialData = apollo.initialData || {};
 
-  cache.restore(initialData);
+  if (apollo.initialData) {
+    cache.restore(apollo.initialData);
+  }
 
   apolloClient = new ApolloClient({
     ssrMode: isSSR(),
@@ -76,7 +77,9 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
     apolloClient.persistor = persistor;
   }
 
-  apolloClient.onResetStore(async () => cache.restore(initialData));
+  apolloClient.onResetStore(async () => {
+    cache.restore(apollo.initialData ?? {})
+  });
 
   return apolloClient;
 };

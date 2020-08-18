@@ -35,5 +35,3 @@ export const withUi = (PageComponent: NextPage<any>): NextPage<any> => {
 
   return WithUi;
 };
-
-// TODO: check root component

@@ -1,5 +1,5 @@
 import { List, Map } from 'immutable';
-import { UiComponent, WebUiComponentConfig } from '../../types';
+import { UiComponent, WebUiComponentConfig, WebUiContextValueInterface } from '../../types';
 import _ from 'lodash';
 
 console.log('loaded WebUiComponentTree');
@@ -33,8 +33,13 @@ export class WebUiComponentTree {
     WebUiComponentTree.THEMES[theme] = WebUiComponentTree.THEMES[theme].push(...componentConfigs);
   }
 
-  static component(uiTag: string, defaultPage?: UiComponent<any>): UiComponent<any> {
+  static component(
+    uiTag: string,
+    uiContext: WebUiContextValueInterface,
+    defaultPage?: UiComponent<any>
+  ): UiComponent<any> {
     console.log('try to resolve component');
+    console.log(uiContext);
     if (WebUiComponentTree.COMPONENT_TREE.has(uiTag)) {
       return WebUiComponentTree.COMPONENT_TREE.get(uiTag);
     }

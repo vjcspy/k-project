@@ -1,14 +1,11 @@
-export * from './lib';
-import dynamic from 'next/dynamic';
-import { WebUiComponentTree } from './lib/ui/component';
+/*____ADAPTER____*/
+export * from './lib/drivers/context';
+export * from './lib/drivers/adapter';
 
-export const bootUi = () => {
-  WebUiComponentTree.registerComponent([
-    {
-      uiId: 'default_category_list',
-      uiTags: ['category_list'],
-      component: dynamic(() => import('./lib/components/category-list-2/category-list-2')),
-      priorityFn: () => 99
-    }
-  ]);
-};
+/*____UI____*/
+export * from './lib/ui/component/withUiComponent';
+export * from './lib/ui/component/extension';
+export * from './lib/ui/component/WebUiComponentTree';
+
+/*____Utilize____*/
+export * from './lib/util';
