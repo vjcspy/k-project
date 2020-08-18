@@ -1,1 +1,1 @@
-export * from './web-hook';
+export * from './withChiaki';

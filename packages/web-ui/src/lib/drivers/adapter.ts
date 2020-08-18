@@ -12,6 +12,5 @@ export const withAdapter = (
     }
   }
 ) => {
-  console.log('here');
   return withUi(withApollo(PageComponent, webUiAdapterOptions));
 };

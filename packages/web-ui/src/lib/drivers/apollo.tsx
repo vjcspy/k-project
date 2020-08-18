@@ -13,7 +13,6 @@ import { NextPage } from 'next';
  * @returns {React.ReactElement<any, any> | null}
  */
 export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdapterOptions) => {
-  console.log('withApollo');
   const { apollo, ssr = true } = adapterProps;
   const apiBase = apollo!.apiBase;
 
@@ -56,12 +55,10 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
       let pageProps = {};
       if (PageComponent.getInitialProps) {
         pageProps = await PageComponent.getInitialProps(ctx);
-        console.log(pageProps);
       }
 
       // Only on the server:
       if (isSSR()) {
-        console.log(3);
         // When redirecting, the response is finished.
         // No point in continuing to render
         if (ctx.res && ctx.res.writableEnded) {
@@ -96,7 +93,6 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
 
       // Extract query data from the Apollo store
       const initialData = client.cache.extract();
-      console.log(initialData);
       return {
         ...pageProps,
         apollo: { initialData },

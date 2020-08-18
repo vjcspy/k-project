@@ -1,4 +1,11 @@
 # web-chiaki
 
-- Logic business
-- State management
+- Only theming component
+
+
+# Known Issues:
+
+- Do tất cả các component mình đều sử dụng dynamic load nên sẽ include những thư viện bên vào file chunk,
+để không bị làm tăng kích thước của component, chỉ nên sử dụng lại props truyền vào, không viết các function xử
+lý cần import module khác vào component
+

@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.159",
     "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.20",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
     "next-pwa": "^3.1.1",

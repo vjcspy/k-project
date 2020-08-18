@@ -16,7 +16,6 @@ export const withUi = (PageComponent: NextPage<any>): NextPage<any> => {
   };
 
   WithUi.getInitialProps = async context => {
-    console.log(4);
     let pageProps = {};
     if (PageComponent.getInitialProps) {
       pageProps = await PageComponent.getInitialProps(context);
