@@ -52,7 +52,7 @@
     "resolveJsonModule": true,
     "isolatedModules": false
   },
-  "include": ["src/**/*.ts"],
+  "include": ["packages/**/*.ts"],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }

@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import { WebUiComponent } from '../../types';
+import { UiComponent } from '../../types';
 
 console.log('loaded withUiComponent');
 
@@ -9,8 +9,6 @@ console.log('loaded withUiComponent');
  * @param Component
  * @returns {(props) => JSX.Element}
  */
-export function withUiComponent<T>(Component: ComponentType<T>): WebUiComponent<T & {}> {
-  return props => {
-    return <Component {...props} />;
-  };
+export function withUiComponent<T>(Component: ComponentType<T>): UiComponent<T> {
+  return props => <Component {...props} />;
 }
