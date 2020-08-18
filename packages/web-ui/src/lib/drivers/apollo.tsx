@@ -13,9 +13,13 @@ import { NextPage } from 'next';
  * @returns {React.ReactElement<any, any> | null}
  */
 export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdapterOptions) => {
-  const { apollo, ssr = true } = adapterProps;
-  const apiBase = apollo!.apiBase;
-
+  const {
+    apollo = {
+      apiBase: process.env.NEXT_PUBLIC_APOLLO_API!
+    },
+    ssr = true
+  } = adapterProps;
+  const apiBase = apollo.apiBase;
   /**
    * React function component
    * @param props
@@ -49,7 +53,7 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
     WithApollo.getInitialProps = async ctx => {
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProp`.
-      const client = initApolloClient(adapterProps.apollo!);
+      const client = initApolloClient(apollo);
 
       // Run wrapped getInitialProps methods
       let pageProps = {};

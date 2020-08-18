@@ -1,9 +1,10 @@
 // import App from "next/app";
-import type { AppProps /*, AppContext */ } from 'next/app'
+import type { AppProps /*, AppContext */ } from 'next/app';
 import withChiakiUi from '@vjcspy/web-chiaki';
+import withUi from '@vjcspy/web-ui';
 
 function Web({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
 // Only uncomment this method if you have blocking data requirements for
@@ -19,4 +20,4 @@ function Web({ Component, pageProps }: AppProps) {
 // }
 
 // @ts-ignore
-export default withChiakiUi(Web);
+export default withChiakiUi(withUi(Web));

@@ -18,6 +18,8 @@ export class WebUiComponentTree {
    */
   static COMPONENT_TREE: Map<string, any> = Map();
 
+  static WEB_UI_CONTEXT : WebUiContextValueInterface;
+
   private static _currentTheme: string = 'ui';
 
   static registerComponent(componentConfigs: WebUiComponentConfig | WebUiComponentConfig[], theme: string = 'ui') {
@@ -35,11 +37,9 @@ export class WebUiComponentTree {
 
   static component(
     uiTag: string,
-    uiContext: WebUiContextValueInterface,
     defaultPage?: UiComponent<any>
   ): UiComponent<any> {
     console.log('try to resolve component');
-    console.log(uiContext);
     if (WebUiComponentTree.COMPONENT_TREE.has(uiTag)) {
       return WebUiComponentTree.COMPONENT_TREE.get(uiTag);
     }

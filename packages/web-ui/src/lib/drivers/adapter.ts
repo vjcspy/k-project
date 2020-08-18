@@ -12,5 +12,5 @@ export const withAdapter = (
     }
   }
 ): NextPage<WebUiPageDefaultProps> => {
-  return withUi(withApollo(PageComponent, webUiAdapterOptions));
+  return withUi(withApollo(PageComponent, webUiAdapterOptions), webUiAdapterOptions);
 };
