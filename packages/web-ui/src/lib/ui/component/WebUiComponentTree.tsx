@@ -2,16 +2,25 @@ import { List, Map } from 'immutable';
 import { WebUiComponent, WebUiComponentConfig } from '../../types';
 import _ from 'lodash';
 
+console.log('loaded WebUiComponentTree');
+
+/**
+ * Đây là cây component đã được cache
+ */
 export class WebUiComponentTree {
   private static THEMES: {
     [propName: string]: List<WebUiComponentConfig>;
   } = {};
 
+  /**
+   * Đây là cây component đã được cache
+   * @type {Map<string, any>}
+   */
   static COMPONENT_TREE: Map<string, any> = Map();
 
-  private static _currentTheme: string = 'default';
+  private static _currentTheme: string = 'ui';
 
-  static registerComponent(componentConfigs: WebUiComponentConfig | WebUiComponentConfig[], theme: string = 'default') {
+  static registerComponent(componentConfigs: WebUiComponentConfig | WebUiComponentConfig[], theme: string = 'ui') {
     if (typeof WebUiComponentTree.THEMES[theme] === 'undefined') {
       WebUiComponentTree.THEMES[theme] = List.of();
     }

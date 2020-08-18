@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { bootUi, UiComponent, withAdapter } from '@vjcspy/web-ui';
+import { bootUi, Extension, withAdapter } from '@vjcspy/web-ui';
 import { withChiakiUi } from '@vjcspy/web-chiaki';
 
 bootUi();
@@ -13,8 +13,8 @@ function BarPage() {
   return (
     <>
       <button onClick={toggleCat}>Toggle</button>
-      <UiComponent uitag={isCom1 ? 'category_list_1' : 'category_list'} />
-      <UiComponent uitag={'test'} />
+      <Extension uitag={isCom1 ? 'category_list_1' : 'category_list'} />
+      <Extension uitag={'test'} />
     </>
   );
 }

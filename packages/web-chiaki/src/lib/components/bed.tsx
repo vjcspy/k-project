@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { useCategoryListQuery } from '@vjcspy/web-ui/build/main/graphql/generated/_generated-hooks';
+import { withUiComponent } from '@vjcspy/web-ui';
 
 console.log('load bed component');
 const Bed: FunctionComponent<{}> = props => {
-
   const { data, loading } = useCategoryListQuery({
     variables: {
       id: 2
@@ -19,4 +19,4 @@ const Bed: FunctionComponent<{}> = props => {
   );
 };
 
-export default Bed;
+export default withUiComponent(Bed);

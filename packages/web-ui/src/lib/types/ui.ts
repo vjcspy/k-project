@@ -1,5 +1,4 @@
 import { ComponentType } from 'react';
-import { WebUiDefaultProps } from './drivers';
 
 export type WebUiComponentConfig = {
   uiId: string;
@@ -11,4 +10,4 @@ export type WebUiComponentConfig = {
 /**
  * Chỉ có một kiểu chung dành cho cả Page, cả Component con là WebUiComponent
  */
-export type WebUiComponent<T> = ComponentType<T & WebUiDefaultProps> & {};
+export type WebUiComponent<T> = ComponentType<T & {}>;

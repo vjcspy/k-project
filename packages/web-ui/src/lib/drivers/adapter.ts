@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { WebUiAdapterOptions } from '../types';
+import { WebUiAdapterOptions, WebUiPageDefaultProps } from '../types';
 import { withApollo } from './apollo';
 import { withUi } from './ui';
 
@@ -11,6 +11,6 @@ export const withAdapter = (
       apiBase: process.env.NEXT_PUBLIC_APOLLO_API!
     }
   }
-) => {
+): NextPage<WebUiPageDefaultProps> => {
   return withUi(withApollo(PageComponent, webUiAdapterOptions));
 };

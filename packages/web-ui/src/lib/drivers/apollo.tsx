@@ -23,7 +23,7 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
    * @constructor
    */
   const WithApollo: NextPage<any> = props => {
-    const { apollo, ssrComplete, ...pageProps } = props;
+    const { apollo, ...pageProps } = props;
 
     const [client] = useApolloClient({ ...apollo, apiBase });
 

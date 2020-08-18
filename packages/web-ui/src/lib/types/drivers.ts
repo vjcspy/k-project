@@ -22,7 +22,7 @@ export type WebUiApolloOptions = {
 /**
  * Props mặc định được pass từ server
  */
-export type WebUiDefaultProps = {
+export type WebUiPageDefaultProps = {
   webUiContext?: {
     pathname: string;
     generatedTime: string;

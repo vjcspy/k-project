@@ -1,3 +1,3 @@
-export * from './withWebUiComponent';
+export * from './withUiComponent';
 export * from './WebUiComponentTree';
-export * from './ui-component';
+export * from './extension';
