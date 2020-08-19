@@ -12,7 +12,7 @@ WebUiComponentTree.registerComponent([
     uiId: 'chiaki_bar_page',
     uiTags: ['BAR_PAGE'],
     component: BarPage,
-    priorityFn: () => 1011
+    priorityFn: () => 1
   },
   {
     uiId: 'chiaki_category_list',

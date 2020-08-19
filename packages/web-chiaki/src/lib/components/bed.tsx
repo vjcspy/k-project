@@ -13,6 +13,7 @@ const Bed: FunctionComponent<{}> = props => {
 
   return (
     <>
+      <h2>Bed from chiaki</h2>
       {loading && null}
       {data ? <pre>{JSON.stringify(data, null, '\t')}</pre> : null}
     </>

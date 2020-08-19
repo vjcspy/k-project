@@ -6,7 +6,7 @@ const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')([
   'bar',
   '@vjcspy/web-chiaki',
-  '@vjcspy/web-chitility',
+  '@vjcspy/chitility',
   '@vjcspy/web-ui',
   '@magento/venia-ui'
 ]);
