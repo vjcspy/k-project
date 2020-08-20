@@ -1,5 +1,3 @@
-import { RecordOf } from 'immutable';
-
 /**
  * Adapter options
  */
@@ -40,18 +38,3 @@ export interface UiContextValue {
   readonly generatedTime: string;
   readonly tree: any;
 }
-
-/**
- * Context data interface
- */
-export interface WebUiContextValueInterface {
-  themeName: string;
-  pathname: string;
-  generatedTime: string;
-  tree: any;
-}
-
-/**
- * Context Record type
- */
-export type WebUiContextValue = RecordOf<WebUiContextValueInterface>;

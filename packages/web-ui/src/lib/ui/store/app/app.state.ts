@@ -1,5 +1,3 @@
-import { Record, RecordOf } from 'immutable';
-
 export interface AppState {
   version: string;
   error?: any;
@@ -10,5 +8,5 @@ export const AppStateFactory: () => AppState = () => ({
   version: '1.0.0',
   error: null,
 
-  count: 0
+  count: 99
 });
