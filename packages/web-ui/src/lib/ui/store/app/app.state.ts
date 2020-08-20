@@ -1,14 +1,12 @@
 import { Record, RecordOf } from 'immutable';
 
-export interface AppStateInterface {
+export interface AppState {
   version: string;
   error?: any;
   count: number;
 }
 
-export type AppState = RecordOf<AppStateInterface>;
-
-export const AppStateFactory: Record.Factory<AppStateInterface> = Record({
+export const AppStateFactory: () => AppState = () => ({
   version: '1.0.0',
   error: null,
 

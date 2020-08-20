@@ -34,6 +34,13 @@ export type WebUiPageDefaultProps = {
   };
 };
 
+export interface UiContextValue {
+  readonly themeName: string;
+  readonly pathname: string;
+  readonly generatedTime: string;
+  readonly tree: any;
+}
+
 /**
  * Context data interface
  */

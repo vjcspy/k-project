@@ -1,20 +1,15 @@
 import * as React from 'react';
-import { useContext } from 'react';
-import { WebUIContext } from './context';
 import moment from 'moment';
 import { NextPage } from 'next';
-import { WebUiComponentTree } from '../ui/component/WebUiComponentTree';
 import { WebUiAdapterOptions } from '../types';
+import { UiContextProvider } from '../ui/context';
 
 export const withUi = (PageComponent: NextPage<any>, webUiAdapterOptions: WebUiAdapterOptions): NextPage<any> => {
   const WithUi: NextPage<any> = props => {
-    const webUiContext = useContext(WebUIContext);
-    const context = webUiContext.merge({ ...props.webUiContext });
-    WebUiComponentTree.WEB_UI_CONTEXT = context.toJS();
     return (
-      <WebUIContext.Provider value={context}>
+      <UiContextProvider value={props.webUiContext}>
         <PageComponent {...props} />
-      </WebUIContext.Provider>
+      </UiContextProvider>
     );
   };
 

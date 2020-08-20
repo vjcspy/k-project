@@ -1,17 +1,17 @@
 import React from 'react';
-import { WebUiComponentTree } from './lib/ui/component/WebUiComponentTree';
+import { WebUiComponentTree } from './lib/ui';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import BarPage from './lib/pages/Bar';
+import BarPage from './lib/++pages/Bar';
+
+/*____TYPES____*/
+export * from './lib/types';
 
 /*____ADAPTER____*/
-export * from './lib/drivers/context';
-export * from './lib/drivers/adapter';
+export * from './lib/+drivers';
 
 /*____UI____*/
-export * from './lib/ui/component/withUiComponent';
-export * from './lib/ui/component/extension';
-export * from './lib/ui/component/WebUiComponentTree';
+export * from './lib/ui';
 
 /*____Utilize____*/
 export * from './lib/util';
@@ -29,7 +29,7 @@ WebUiComponentTree.registerComponent([
   {
     uiId: 'ui_bar_child1',
     uiTags: ['bar_child1'],
-    component: dynamic(() => import('./lib/components/category-list/category-list')),
+    component: dynamic(() => import('./lib/++components/category-list/category-list')),
     priorityFn: () => 101
   }
 ]);

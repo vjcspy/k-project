@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Extension } from '../ui/component/extension';
-import { withAdapter } from '../drivers';
+import { withAdapter } from '../+drivers';
 
 console.log('loaded bar page from Web UI');
 
