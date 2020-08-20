@@ -5,11 +5,12 @@ export const RetryLinkWithDefaultBehavior = () => {
     delay: {
       initial: 200,
       max: Infinity,
-      jitter: true
+      jitter: true,
     },
     attempts: {
       max: 3,
-      retryIf: error => error && (typeof navigator === 'undefined' || navigator.onLine)
-    }
+      retryIf: (error) =>
+        error && (typeof navigator === 'undefined' || navigator.onLine),
+    },
   });
 };

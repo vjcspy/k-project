@@ -1,230 +1,228 @@
-
-      export interface IntrospectionResultData {
-        __schema: {
-          types: {
-            kind: string;
-            name: string;
-            possibleTypes: {
-              name: string;
-            }[];
-          }[];
-        };
-      }
-      const result: IntrospectionResultData = {
-  "__schema": {
-    "types": [
+export interface IntrospectionResultData {
+  __schema: {
+    types: {
+      kind: string;
+      name: string;
+      possibleTypes: {
+        name: string;
+      }[];
+    }[];
+  };
+}
+const result: IntrospectionResultData = {
+  __schema: {
+    types: [
       {
-        "kind": "INTERFACE",
-        "name": "CartAddressInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'CartAddressInterface',
+        possibleTypes: [
           {
-            "name": "BillingCartAddress"
+            name: 'BillingCartAddress',
           },
           {
-            "name": "ShippingCartAddress"
-          }
-        ]
+            name: 'ShippingCartAddress',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "CartItemInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'CartItemInterface',
+        possibleTypes: [
           {
-            "name": "SimpleCartItem"
+            name: 'SimpleCartItem',
           },
           {
-            "name": "VirtualCartItem"
+            name: 'VirtualCartItem',
           },
           {
-            "name": "DownloadableCartItem"
+            name: 'DownloadableCartItem',
           },
           {
-            "name": "BundleCartItem"
+            name: 'BundleCartItem',
           },
           {
-            "name": "ConfigurableCartItem"
-          }
-        ]
+            name: 'ConfigurableCartItem',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "ProductInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'ProductInterface',
+        possibleTypes: [
           {
-            "name": "VirtualProduct"
+            name: 'VirtualProduct',
           },
           {
-            "name": "SimpleProduct"
+            name: 'SimpleProduct',
           },
           {
-            "name": "DownloadableProduct"
+            name: 'DownloadableProduct',
           },
           {
-            "name": "GiftCardProduct"
+            name: 'GiftCardProduct',
           },
           {
-            "name": "BundleProduct"
+            name: 'BundleProduct',
           },
           {
-            "name": "GroupedProduct"
+            name: 'GroupedProduct',
           },
           {
-            "name": "ConfigurableProduct"
-          }
-        ]
+            name: 'ConfigurableProduct',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "CategoryInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'CategoryInterface',
+        possibleTypes: [
           {
-            "name": "CategoryTree"
-          }
-        ]
+            name: 'CategoryTree',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "MediaGalleryInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'MediaGalleryInterface',
+        possibleTypes: [
           {
-            "name": "ProductImage"
+            name: 'ProductImage',
           },
           {
-            "name": "ProductVideo"
-          }
-        ]
+            name: 'ProductVideo',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "ProductLinksInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'ProductLinksInterface',
+        possibleTypes: [
           {
-            "name": "ProductLinks"
-          }
-        ]
+            name: 'ProductLinks',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "AggregationOptionInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'AggregationOptionInterface',
+        possibleTypes: [
           {
-            "name": "AggregationOption"
-          }
-        ]
+            name: 'AggregationOption',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "LayerFilterItemInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'LayerFilterItemInterface',
+        possibleTypes: [
           {
-            "name": "LayerFilterItem"
+            name: 'LayerFilterItem',
           },
           {
-            "name": "SwatchLayerFilterItem"
-          }
-        ]
+            name: 'SwatchLayerFilterItem',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "PhysicalProductInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'PhysicalProductInterface',
+        possibleTypes: [
           {
-            "name": "SimpleProduct"
+            name: 'SimpleProduct',
           },
           {
-            "name": "GiftCardProduct"
+            name: 'GiftCardProduct',
           },
           {
-            "name": "BundleProduct"
+            name: 'BundleProduct',
           },
           {
-            "name": "GroupedProduct"
+            name: 'GroupedProduct',
           },
           {
-            "name": "ConfigurableProduct"
-          }
-        ]
+            name: 'ConfigurableProduct',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "CustomizableOptionInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'CustomizableOptionInterface',
+        possibleTypes: [
           {
-            "name": "CustomizableAreaOption"
+            name: 'CustomizableAreaOption',
           },
           {
-            "name": "CustomizableDateOption"
+            name: 'CustomizableDateOption',
           },
           {
-            "name": "CustomizableDropDownOption"
+            name: 'CustomizableDropDownOption',
           },
           {
-            "name": "CustomizableMultipleOption"
+            name: 'CustomizableMultipleOption',
           },
           {
-            "name": "CustomizableFieldOption"
+            name: 'CustomizableFieldOption',
           },
           {
-            "name": "CustomizableFileOption"
+            name: 'CustomizableFileOption',
           },
           {
-            "name": "CustomizableRadioOption"
+            name: 'CustomizableRadioOption',
           },
           {
-            "name": "CustomizableCheckboxOption"
-          }
-        ]
+            name: 'CustomizableCheckboxOption',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "CustomizableProductInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'CustomizableProductInterface',
+        possibleTypes: [
           {
-            "name": "VirtualProduct"
+            name: 'VirtualProduct',
           },
           {
-            "name": "SimpleProduct"
+            name: 'SimpleProduct',
           },
           {
-            "name": "DownloadableProduct"
+            name: 'DownloadableProduct',
           },
           {
-            "name": "GiftCardProduct"
+            name: 'GiftCardProduct',
           },
           {
-            "name": "BundleProduct"
+            name: 'BundleProduct',
           },
           {
-            "name": "ConfigurableProduct"
-          }
-        ]
+            name: 'ConfigurableProduct',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "SwatchDataInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'SwatchDataInterface',
+        possibleTypes: [
           {
-            "name": "ImageSwatchData"
+            name: 'ImageSwatchData',
           },
           {
-            "name": "TextSwatchData"
+            name: 'TextSwatchData',
           },
           {
-            "name": "ColorSwatchData"
-          }
-        ]
+            name: 'ColorSwatchData',
+          },
+        ],
       },
       {
-        "kind": "INTERFACE",
-        "name": "SwatchLayerFilterItemInterface",
-        "possibleTypes": [
+        kind: 'INTERFACE',
+        name: 'SwatchLayerFilterItemInterface',
+        possibleTypes: [
           {
-            "name": "SwatchLayerFilterItem"
-          }
-        ]
-      }
-    ]
-  }
+            name: 'SwatchLayerFilterItem',
+          },
+        ],
+      },
+    ],
+  },
 };
-      export default result;
-    
+export default result;

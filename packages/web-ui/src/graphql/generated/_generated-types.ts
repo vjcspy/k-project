@@ -1,7 +1,8 @@
 /** eslint-disable */
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
 
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -67,62 +68,50 @@ export type Query = {
   wishlist?: Maybe<WishlistOutput>;
 };
 
-
 export type QueryCartArgs = {
   cart_id: Scalars['String'];
 };
-
 
 export type QueryCategoryArgs = {
   id?: Maybe<Scalars['Int']>;
 };
 
-
 export type QueryCategoryListArgs = {
   filters?: Maybe<CategoryFilterInput>;
 };
 
-
 export type QueryCmsBlocksArgs = {
   identifiers?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
-
 
 export type QueryCmsPageArgs = {
   id?: Maybe<Scalars['Int']>;
   identifier?: Maybe<Scalars['String']>;
 };
 
-
 export type QueryCountryArgs = {
   id?: Maybe<Scalars['String']>;
 };
-
 
 export type QueryCustomAttributeMetadataArgs = {
   attributes: Array<AttributeInput>;
 };
 
-
 export type QueryGetHostedProUrlArgs = {
   input: HostedProUrlInput;
 };
-
 
 export type QueryGetPayflowLinkTokenArgs = {
   input: PayflowLinkTokenInput;
 };
 
-
 export type QueryGiftCardAccountArgs = {
   input: GiftCardAccountInput;
 };
 
-
 export type QueryIsEmailAvailableArgs = {
   email: Scalars['String'];
 };
-
 
 export type QueryProductsArgs = {
   search?: Maybe<Scalars['String']>;
@@ -132,7 +121,6 @@ export type QueryProductsArgs = {
   sort?: Maybe<ProductAttributeSortInput>;
 };
 
-
 export type QueryUrlResolverArgs = {
   url: Scalars['String'];
 };
@@ -141,7 +129,7 @@ export type Cart = {
   __typename?: 'Cart';
   /**
    * An array of coupons that have been applied to the cart
-   * @deprecated Use applied_coupons instead 
+   * @deprecated Use applied_coupons instead
    */
   applied_coupon?: Maybe<AppliedCoupon>;
   /** An array of `AppliedCoupon` objects. Each object contains the `code` text attribute, which specifies the coupon code */
@@ -362,7 +350,7 @@ export enum CurrencyEnum {
   Azm = 'AZM',
   Rol = 'ROL',
   Trl = 'TRL',
-  Xpf = 'XPF'
+  Xpf = 'XPF',
 }
 
 /** Applied and current balance */
@@ -619,7 +607,6 @@ export type CategoryInterface = {
   url_suffix?: Maybe<Scalars['String']>;
 };
 
-
 /** CategoryInterface contains the full set of attributes that can be returned in a category search. */
 export type CategoryInterfaceProductsArgs = {
   pageSize?: Maybe<Scalars['Int']>;
@@ -668,7 +655,7 @@ export type ProductAttributeSortInput = {
 /** This enumeration indicates whether to return results in ascending or descending order */
 export enum SortEnum {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 /** The category products object returned in the Category query. */
@@ -831,13 +818,13 @@ export type PriceAdjustment = {
 export enum PriceAdjustmentCodesEnum {
   Tax = 'TAX',
   Weee = 'WEEE',
-  WeeeTax = 'WEEE_TAX'
+  WeeeTax = 'WEEE_TAX',
 }
 
 /** PriceAdjustmentDescriptionEnum is deprecated. This enumeration states whether a price adjustment is included or excluded. */
 export enum PriceAdjustmentDescriptionEnum {
   Included = 'INCLUDED',
-  Excluded = 'EXCLUDED'
+  Excluded = 'EXCLUDED',
 }
 
 /** Price range for a product. If the product has a single price, the minimum and maximum price will be the same. */
@@ -907,7 +894,7 @@ export type ProductLinksInterface = {
 /** This enumeration states whether a product stock status is in stock or out of stock */
 export enum ProductStockStatus {
   InStock = 'IN_STOCK',
-  OutOfStock = 'OUT_OF_STOCK'
+  OutOfStock = 'OUT_OF_STOCK',
 }
 
 /** ProductTierPrices is deprecated and has been replaced by TierPrice. The ProductTierPrices object defines a tier price, which is a quantity discount offered to a specific customer group. */
@@ -1143,7 +1130,6 @@ export type CategoryTree = CategoryInterface & {
   url_suffix?: Maybe<Scalars['String']>;
 };
 
-
 /** Category Tree implementation. */
 export type CategoryTreeProductsArgs = {
   pageSize?: Maybe<Scalars['Int']>;
@@ -1195,7 +1181,7 @@ export type CheckoutAgreement = {
 
 export enum CheckoutAgreementMode {
   Auto = 'AUTO',
-  Manual = 'MANUAL'
+  Manual = 'MANUAL',
 }
 
 /** CMS blocks information */
@@ -1899,7 +1885,7 @@ export enum CountryCodeEnum {
   /** Zambia */
   Zm = 'ZM',
   /** Zimbabwe */
-  Zw = 'ZW'
+  Zw = 'ZW',
 }
 
 export type CustomerAddressAttribute = {
@@ -1931,7 +1917,6 @@ export type CustomerStoreCredit = {
   /** Indicates whether store credits are enabled. If the feature is disabled, then the balance will not be returned */
   enabled?: Maybe<Scalars['Boolean']>;
 };
-
 
 /** Contains store credit information with balance and history */
 export type CustomerStoreCreditBalance_HistoryArgs = {
@@ -2045,7 +2030,7 @@ export type PaymentToken = {
 /** The list of available payment token types */
 export enum PaymentTokenTypeEnum {
   Card = 'card',
-  Account = 'account'
+  Account = 'account',
 }
 
 /** The required input to request the secure URL for Payments Pro Hosted Solution payment. */
@@ -2082,7 +2067,7 @@ export type PayflowLinkToken = {
 /** Mode for payment: TEST or LIVE. Applies to Payflow Link and Payments Advanced payment methods. */
 export enum PayflowLinkMode {
   Test = 'TEST',
-  Live = 'LIVE'
+  Live = 'LIVE',
 }
 
 export type GiftCardAccountInput = {
@@ -2262,7 +2247,9 @@ export type StoreConfig = {
   /** Default Sort By. */
   catalog_default_sort_by?: Maybe<Scalars['String']>;
   /** Corresponds to the 'Display Prices In Product Lists' field. It indicates how FPT information is displayed on category pages */
-  category_fixed_product_tax_display_setting?: Maybe<FixedProductTaxDisplaySettings>;
+  category_fixed_product_tax_display_setting?: Maybe<
+    FixedProductTaxDisplaySettings
+  >;
   /** Category URL Suffix. */
   category_url_suffix?: Maybe<Scalars['String']>;
   /** CMS Home Page */
@@ -2316,13 +2303,17 @@ export type StoreConfig = {
   /** Default No-route URL */
   no_route?: Maybe<Scalars['String']>;
   /** Corresponds to the 'Display Prices On Product View Page' field. It indicates how FPT information is displayed on product pages */
-  product_fixed_product_tax_display_setting?: Maybe<FixedProductTaxDisplaySettings>;
+  product_fixed_product_tax_display_setting?: Maybe<
+    FixedProductTaxDisplaySettings
+  >;
   /** Product URL Suffix. */
   product_url_suffix?: Maybe<Scalars['String']>;
   /** The ID of the root category */
   root_category_id?: Maybe<Scalars['Int']>;
   /** Corresponds to the 'Display Prices In Sales Modules' field. It indicates how FPT information is displayed on cart, checkout, and order pages */
-  sales_fixed_product_tax_display_setting?: Maybe<FixedProductTaxDisplaySettings>;
+  sales_fixed_product_tax_display_setting?: Maybe<
+    FixedProductTaxDisplaySettings
+  >;
   /** Secure base link URL for the store */
   secure_base_link_url?: Maybe<Scalars['String']>;
   /** Secure base media URL for the store */
@@ -2362,7 +2353,7 @@ export enum FixedProductTaxDisplaySettings {
   /** The displayed price does not include the FPT amount. The values from ProductPrice.fixed_product_taxes are not displayed. This value corresponds to 'Excluding FPT' */
   ExcludeFptWithoutDetails = 'EXCLUDE_FPT_WITHOUT_DETAILS',
   /** The FPT feature is not enabled. You can omit  ProductPrice.fixed_product_taxes from your query */
-  FptDisabled = 'FPT_DISABLED'
+  FptDisabled = 'FPT_DISABLED',
 }
 
 /** EntityUrl is an output object containing the `id`, `relative_url`, and `type` attributes */
@@ -2384,7 +2375,7 @@ export type EntityUrl = {
 export enum UrlRewriteEntityTypeEnum {
   CmsPage = 'CMS_PAGE',
   Product = 'PRODUCT',
-  Category = 'CATEGORY'
+  Category = 'CATEGORY',
 }
 
 /** Deprecated: `Wishlist` type should be used instead */
@@ -2479,179 +2470,144 @@ export type Mutation = {
   updateCustomerAddress?: Maybe<CustomerAddress>;
 };
 
-
 export type MutationAddBundleProductsToCartArgs = {
   input?: Maybe<AddBundleProductsToCartInput>;
 };
-
 
 export type MutationAddConfigurableProductsToCartArgs = {
   input?: Maybe<AddConfigurableProductsToCartInput>;
 };
 
-
 export type MutationAddDownloadableProductsToCartArgs = {
   input?: Maybe<AddDownloadableProductsToCartInput>;
 };
-
 
 export type MutationAddSimpleProductsToCartArgs = {
   input?: Maybe<AddSimpleProductsToCartInput>;
 };
 
-
 export type MutationAddVirtualProductsToCartArgs = {
   input?: Maybe<AddVirtualProductsToCartInput>;
 };
-
 
 export type MutationApplyCouponToCartArgs = {
   input?: Maybe<ApplyCouponToCartInput>;
 };
 
-
 export type MutationApplyGiftCardToCartArgs = {
   input?: Maybe<ApplyGiftCardToCartInput>;
 };
 
-
 export type MutationApplyStoreCreditToCartArgs = {
   input: ApplyStoreCreditToCartInput;
 };
-
 
 export type MutationChangeCustomerPasswordArgs = {
   currentPassword: Scalars['String'];
   newPassword: Scalars['String'];
 };
 
-
 export type MutationCreateCustomerArgs = {
   input: CustomerInput;
 };
-
 
 export type MutationCreateCustomerAddressArgs = {
   input: CustomerAddressInput;
 };
 
-
 export type MutationCreateEmptyCartArgs = {
   input?: Maybe<CreateEmptyCartInput>;
 };
-
 
 export type MutationCreatePayflowProTokenArgs = {
   input: PayflowProTokenInput;
 };
 
-
 export type MutationCreatePaypalExpressTokenArgs = {
   input: PaypalExpressTokenInput;
 };
-
 
 export type MutationDeleteCustomerAddressArgs = {
   id: Scalars['Int'];
 };
 
-
 export type MutationDeletePaymentTokenArgs = {
   public_hash: Scalars['String'];
 };
-
 
 export type MutationGenerateCustomerTokenArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
 
-
 export type MutationHandlePayflowProResponseArgs = {
   input: PayflowProResponseInput;
 };
-
 
 export type MutationMergeCartsArgs = {
   source_cart_id: Scalars['String'];
   destination_cart_id: Scalars['String'];
 };
 
-
 export type MutationPlaceOrderArgs = {
   input?: Maybe<PlaceOrderInput>;
 };
-
 
 export type MutationRedeemGiftCardBalanceAsStoreCreditArgs = {
   input: GiftCardAccountInput;
 };
 
-
 export type MutationRemoveCouponFromCartArgs = {
   input?: Maybe<RemoveCouponFromCartInput>;
 };
-
 
 export type MutationRemoveGiftCardFromCartArgs = {
   input?: Maybe<RemoveGiftCardFromCartInput>;
 };
 
-
 export type MutationRemoveItemFromCartArgs = {
   input?: Maybe<RemoveItemFromCartInput>;
 };
-
 
 export type MutationRemoveStoreCreditFromCartArgs = {
   input: RemoveStoreCreditFromCartInput;
 };
 
-
 export type MutationSendEmailToFriendArgs = {
   input?: Maybe<SendEmailToFriendInput>;
 };
-
 
 export type MutationSetBillingAddressOnCartArgs = {
   input?: Maybe<SetBillingAddressOnCartInput>;
 };
 
-
 export type MutationSetGuestEmailOnCartArgs = {
   input?: Maybe<SetGuestEmailOnCartInput>;
 };
-
 
 export type MutationSetPaymentMethodAndPlaceOrderArgs = {
   input?: Maybe<SetPaymentMethodAndPlaceOrderInput>;
 };
 
-
 export type MutationSetPaymentMethodOnCartArgs = {
   input?: Maybe<SetPaymentMethodOnCartInput>;
 };
-
 
 export type MutationSetShippingAddressesOnCartArgs = {
   input?: Maybe<SetShippingAddressesOnCartInput>;
 };
 
-
 export type MutationSetShippingMethodsOnCartArgs = {
   input?: Maybe<SetShippingMethodsOnCartInput>;
 };
-
 
 export type MutationUpdateCartItemsArgs = {
   input?: Maybe<UpdateCartItemsInput>;
 };
 
-
 export type MutationUpdateCustomerArgs = {
   input: CustomerInput;
 };
-
 
 export type MutationUpdateCustomerAddressArgs = {
   id: Scalars['Int'];
@@ -2716,7 +2672,9 @@ export type AddDownloadableProductsToCartInput = {
 export type DownloadableProductCartItemInput = {
   customizable_options?: Maybe<Array<Maybe<CustomizableOptionInput>>>;
   data: CartItemInput;
-  downloadable_product_links?: Maybe<Array<Maybe<DownloadableProductLinksInput>>>;
+  downloadable_product_links?: Maybe<
+    Array<Maybe<DownloadableProductLinksInput>>
+  >;
 };
 
 export type DownloadableProductLinksInput = {
@@ -3324,7 +3282,7 @@ export type FilterTypeInput = {
 export enum PriceTypeEnum {
   Fixed = 'FIXED',
   Percent = 'PERCENT',
-  Dynamic = 'DYNAMIC'
+  Dynamic = 'DYNAMIC',
 }
 
 /** ProductLinks is an implementation of ProductLinksInterface. */
@@ -3632,242 +3590,245 @@ export type CustomizableCheckboxValue = {
 };
 
 /** A virtual product is non-tangible product that does not require shipping and is not kept in inventory. */
-export type VirtualProduct = ProductInterface & CustomizableProductInterface & {
-  __typename?: 'VirtualProduct';
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** An array of options for a customizable product. */
-  options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-};
+export type VirtualProduct = ProductInterface &
+  CustomizableProductInterface & {
+    __typename?: 'VirtualProduct';
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** An array of options for a customizable product. */
+    options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+  };
 
 /** A simple product is tangible and are usually sold as single units or in fixed quantities. */
-export type SimpleProduct = ProductInterface & PhysicalProductInterface & CustomizableProductInterface & {
-  __typename?: 'SimpleProduct';
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** An array of options for a customizable product. */
-  options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-  /** The weight of the item, in units defined by the store. */
-  weight?: Maybe<Scalars['Float']>;
-};
+export type SimpleProduct = ProductInterface &
+  PhysicalProductInterface &
+  CustomizableProductInterface & {
+    __typename?: 'SimpleProduct';
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** An array of options for a customizable product. */
+    options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+    /** The weight of the item, in units defined by the store. */
+    weight?: Maybe<Scalars['Float']>;
+  };
 
 /** ProductFilterInput is deprecated, use @ProductAttributeFilterInput instead. ProductFilterInput defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for. */
 export type ProductFilterInput = {
@@ -4127,7 +4088,7 @@ export type DownloadableProductLinks = {
 
 export enum DownloadableFileTypeEnum {
   File = 'FILE',
-  Url = 'URL'
+  Url = 'URL',
 }
 
 /** DownloadableProductSamples defines characteristics of a downloadable product */
@@ -4148,268 +4109,273 @@ export type DownloadableProductSamples = {
 };
 
 /** DownloadableProduct defines a product that the customer downloads */
-export type DownloadableProduct = ProductInterface & CustomizableProductInterface & {
-  __typename?: 'DownloadableProduct';
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** An array containing information about the links for this downloadable product */
-  downloadable_product_links?: Maybe<Array<Maybe<DownloadableProductLinks>>>;
-  /** An array containing information about samples of this downloadable product. */
-  downloadable_product_samples?: Maybe<Array<Maybe<DownloadableProductSamples>>>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** A value of 1 indicates that each link in the array must be purchased separately */
-  links_purchased_separately?: Maybe<Scalars['Int']>;
-  /** The heading above the list of downloadable products */
-  links_title?: Maybe<Scalars['String']>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** An array of options for a customizable product. */
-  options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-};
+export type DownloadableProduct = ProductInterface &
+  CustomizableProductInterface & {
+    __typename?: 'DownloadableProduct';
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** An array containing information about the links for this downloadable product */
+    downloadable_product_links?: Maybe<Array<Maybe<DownloadableProductLinks>>>;
+    /** An array containing information about samples of this downloadable product. */
+    downloadable_product_samples?: Maybe<
+      Array<Maybe<DownloadableProductSamples>>
+    >;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** A value of 1 indicates that each link in the array must be purchased separately */
+    links_purchased_separately?: Maybe<Scalars['Int']>;
+    /** The heading above the list of downloadable products */
+    links_title?: Maybe<Scalars['String']>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** An array of options for a customizable product. */
+    options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+  };
 
 /** GiftCardProduct defines properties of a gift card, including the minimum and maximum values and an array that contains the current and past values on the specific gift card */
-export type GiftCardProduct = ProductInterface & PhysicalProductInterface & CustomizableProductInterface & {
-  __typename?: 'GiftCardProduct';
-  /** Indicates whether the customer can provide a message to accompany the gift card. */
-  allow_message?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether customers have the ability to set the value of the gift card. */
-  allow_open_amount?: Maybe<Scalars['Boolean']>;
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** An array that contains information about the values and ID of a gift card. */
-  giftcard_amounts?: Maybe<Array<Maybe<GiftCardAmounts>>>;
-  /** Either VIRTUAL, PHYSICAL, or COMBINED. */
-  giftcard_type?: Maybe<GiftCardTypeEnum>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the customer can redeem the value on the card for cash. */
-  is_redeemable?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** The number of days after purchase until the gift card expires. A null value means there is no limit. */
-  lifetime?: Maybe<Scalars['Int']>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** Indicates whether the customer can provide a message to accompany the gift card. */
-  message_max_length?: Maybe<Scalars['Int']>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** The minimum acceptable value of an open amount gift card. */
-  open_amount_max?: Maybe<Scalars['Float']>;
-  /** The minimum acceptable value of an open amount gift card. */
-  open_amount_min?: Maybe<Scalars['Float']>;
-  /** An array of options for a customizable product. */
-  options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-  /** The weight of the item, in units defined by the store. */
-  weight?: Maybe<Scalars['Float']>;
-};
+export type GiftCardProduct = ProductInterface &
+  PhysicalProductInterface &
+  CustomizableProductInterface & {
+    __typename?: 'GiftCardProduct';
+    /** Indicates whether the customer can provide a message to accompany the gift card. */
+    allow_message?: Maybe<Scalars['Boolean']>;
+    /** Indicates whether customers have the ability to set the value of the gift card. */
+    allow_open_amount?: Maybe<Scalars['Boolean']>;
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** An array that contains information about the values and ID of a gift card. */
+    giftcard_amounts?: Maybe<Array<Maybe<GiftCardAmounts>>>;
+    /** Either VIRTUAL, PHYSICAL, or COMBINED. */
+    giftcard_type?: Maybe<GiftCardTypeEnum>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the customer can redeem the value on the card for cash. */
+    is_redeemable?: Maybe<Scalars['Boolean']>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** The number of days after purchase until the gift card expires. A null value means there is no limit. */
+    lifetime?: Maybe<Scalars['Int']>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** Indicates whether the customer can provide a message to accompany the gift card. */
+    message_max_length?: Maybe<Scalars['Int']>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** The minimum acceptable value of an open amount gift card. */
+    open_amount_max?: Maybe<Scalars['Float']>;
+    /** The minimum acceptable value of an open amount gift card. */
+    open_amount_min?: Maybe<Scalars['Float']>;
+    /** An array of options for a customizable product. */
+    options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+    /** The weight of the item, in units defined by the store. */
+    weight?: Maybe<Scalars['Float']>;
+  };
 
 /** GiftCardAmounts contains the value of a gift card, the website that generated the card, and related information */
 export type GiftCardAmounts = {
@@ -4430,7 +4396,7 @@ export type GiftCardAmounts = {
 export enum GiftCardTypeEnum {
   Virtual = 'VIRTUAL',
   Physical = 'PHYSICAL',
-  Combined = 'COMBINED'
+  Combined = 'COMBINED',
 }
 
 export type BundleCartItem = CartItemInterface & {
@@ -4507,268 +4473,271 @@ export type BundleItemOption = {
 };
 
 /** BundleProduct defines basic features of a bundle product and contains multiple BundleItems. */
-export type BundleProduct = ProductInterface & PhysicalProductInterface & CustomizableProductInterface & {
-  __typename?: 'BundleProduct';
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** Indicates whether the bundle product has a dynamic price. */
-  dynamic_price?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether the bundle product has a dynamic SK. */
-  dynamic_sku?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether the bundle product has a dynamically calculated weight. */
-  dynamic_weight?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** An array containing information about individual bundle items. */
-  items?: Maybe<Array<Maybe<BundleItem>>>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** An array of options for a customizable product. */
-  options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** One of PRICE_RANGE or AS_LOW_AS. */
-  price_view?: Maybe<PriceViewEnum>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Indicates whether to ship bundle items together or individually. */
-  ship_bundle_items?: Maybe<ShipBundleItemsEnum>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-  /** The weight of the item, in units defined by the store. */
-  weight?: Maybe<Scalars['Float']>;
-};
+export type BundleProduct = ProductInterface &
+  PhysicalProductInterface &
+  CustomizableProductInterface & {
+    __typename?: 'BundleProduct';
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** Indicates whether the bundle product has a dynamic price. */
+    dynamic_price?: Maybe<Scalars['Boolean']>;
+    /** Indicates whether the bundle product has a dynamic SK. */
+    dynamic_sku?: Maybe<Scalars['Boolean']>;
+    /** Indicates whether the bundle product has a dynamically calculated weight. */
+    dynamic_weight?: Maybe<Scalars['Boolean']>;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** An array containing information about individual bundle items. */
+    items?: Maybe<Array<Maybe<BundleItem>>>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** An array of options for a customizable product. */
+    options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** One of PRICE_RANGE or AS_LOW_AS. */
+    price_view?: Maybe<PriceViewEnum>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Indicates whether to ship bundle items together or individually. */
+    ship_bundle_items?: Maybe<ShipBundleItemsEnum>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+    /** The weight of the item, in units defined by the store. */
+    weight?: Maybe<Scalars['Float']>;
+  };
 
 /** This enumeration defines whether a bundle product's price is displayed as the lowest possible value or as a range. */
 export enum PriceViewEnum {
   PriceRange = 'PRICE_RANGE',
-  AsLowAs = 'AS_LOW_AS'
+  AsLowAs = 'AS_LOW_AS',
 }
 
 /** This enumeration defines whether bundle items must be shipped together. */
 export enum ShipBundleItemsEnum {
   Together = 'TOGETHER',
-  Separately = 'SEPARATELY'
+  Separately = 'SEPARATELY',
 }
 
 /** GroupedProduct defines a grouped product */
-export type GroupedProduct = ProductInterface & PhysicalProductInterface & {
-  __typename?: 'GroupedProduct';
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** An array containing grouped product items */
-  items?: Maybe<Array<Maybe<GroupedProductItem>>>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-  /** The weight of the item, in units defined by the store. */
-  weight?: Maybe<Scalars['Float']>;
-};
+export type GroupedProduct = ProductInterface &
+  PhysicalProductInterface & {
+    __typename?: 'GroupedProduct';
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** An array containing grouped product items */
+    items?: Maybe<Array<Maybe<GroupedProductItem>>>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+    /** The weight of the item, in units defined by the store. */
+    weight?: Maybe<Scalars['Float']>;
+  };
 
 /** GroupedProductItem contains information about an individual grouped product item */
 export type GroupedProductItem = {
@@ -4807,128 +4776,130 @@ export type PayflowProToken = {
 };
 
 /** ConfigurableProduct defines basic features of a configurable product and its simple product variants */
-export type ConfigurableProduct = ProductInterface & PhysicalProductInterface & CustomizableProductInterface & {
-  __typename?: 'ConfigurableProduct';
-  /** The attribute set assigned to the product. */
-  attribute_set_id?: Maybe<Scalars['Int']>;
-  /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
-  canonical_url?: Maybe<Scalars['String']>;
-  /** The categories assigned to a product. */
-  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
-  color?: Maybe<Scalars['Int']>;
-  /** An array of linked simple product items */
-  configurable_options?: Maybe<Array<Maybe<ConfigurableProductOptions>>>;
-  /** The product's country of origin. */
-  country_of_manufacture?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was created. */
-  created_at?: Maybe<Scalars['String']>;
-  /** Crosssell Products */
-  crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** Detailed information about the product. The value can include simple HTML tags. */
-  description?: Maybe<ComplexTextValue>;
-  /** Indicates whether a gift message is available. */
-  gift_message_available?: Maybe<Scalars['String']>;
-  /** The ID number assigned to the product. */
-  id?: Maybe<Scalars['Int']>;
-  /** The relative path to the main image on the product page. */
-  image?: Maybe<ProductImage>;
-  /** Indicates whether the product can be returned */
-  is_returnable?: Maybe<Scalars['String']>;
-  /** A number representing the product's manufacturer. */
-  manufacturer?: Maybe<Scalars['Int']>;
-  /** An array of Media Gallery objects. */
-  media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
-  /**
-   * An array of MediaGalleryEntry objects.
-   * @deprecated Use product's `media_gallery` instead
-   */
-  media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
-  /** A brief overview of the product for search results listings, maximum 255 characters. */
-  meta_description?: Maybe<Scalars['String']>;
-  /** A comma-separated list of keywords that are visible only to search engines. */
-  meta_keyword?: Maybe<Scalars['String']>;
-  /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
-  meta_title?: Maybe<Scalars['String']>;
-  /** The product name. Customers use this name to identify the product. */
-  name?: Maybe<Scalars['String']>;
-  /** The beginning date for new product listings, and determines if the product is featured as a new product. */
-  new_from_date?: Maybe<Scalars['String']>;
-  /** The end date for new product listings. */
-  new_to_date?: Maybe<Scalars['String']>;
-  /** Product stock only x left count */
-  only_x_left_in_stock?: Maybe<Scalars['Float']>;
-  /** An array of options for a customizable product. */
-  options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
-  /** If the product has multiple options, determines where they appear on the product page. */
-  options_container?: Maybe<Scalars['String']>;
-  /**
-   * A ProductPrices object, indicating the price of an item.
-   * @deprecated Use price_range for product price information.
-   */
-  price?: Maybe<ProductPrices>;
-  /** A PriceRange object, indicating the range of prices for the product */
-  price_range: PriceRange;
-  /** An array of TierPrice objects. */
-  price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
-  /** An array of ProductLinks objects. */
-  product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
-  /** Related Products */
-  related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** A short description of the product. Its use depends on the theme. */
-  short_description?: Maybe<ComplexTextValue>;
-  /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
-  sku?: Maybe<Scalars['String']>;
-  /** The relative path to the small image, which is used on catalog pages. */
-  small_image?: Maybe<ProductImage>;
-  /** The beginning date that a product has a special price. */
-  special_from_date?: Maybe<Scalars['String']>;
-  /** The discounted price of the product. */
-  special_price?: Maybe<Scalars['Float']>;
-  /** The end date that a product has a special price. */
-  special_to_date?: Maybe<Scalars['String']>;
-  /** Stock status of the product */
-  stock_status?: Maybe<ProductStockStatus>;
-  /** The file name of a swatch image */
-  swatch_image?: Maybe<Scalars['String']>;
-  /** The relative path to the product's thumbnail image. */
-  thumbnail?: Maybe<ProductImage>;
-  /**
-   * The price when tier pricing is in effect and the items purchased threshold has been reached.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_price?: Maybe<Scalars['Float']>;
-  /**
-   * An array of ProductTierPrices objects.
-   * @deprecated Use price_tiers for product tier price information.
-   */
-  tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
-  /**
-   * One of simple, virtual, bundle, downloadable, grouped, or configurable.
-   * @deprecated Use __typename instead.
-   */
-  type_id?: Maybe<Scalars['String']>;
-  /** Timestamp indicating when the product was updated. */
-  updated_at?: Maybe<Scalars['String']>;
-  /** Upsell Products */
-  upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The part of the URL that identifies the product */
-  url_key?: Maybe<Scalars['String']>;
-  /** @deprecated Use product's `canonical_url` or url rewrites instead */
-  url_path?: Maybe<Scalars['String']>;
-  /** URL rewrites list */
-  url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
-  /** The part of the product URL that is appended after the url key */
-  url_suffix?: Maybe<Scalars['String']>;
-  /** An array of variants of products */
-  variants?: Maybe<Array<Maybe<ConfigurableVariant>>>;
-  /**
-   * An array of websites in which the product is available.
-   * @deprecated The field should not be used on the storefront.
-   */
-  websites?: Maybe<Array<Maybe<Website>>>;
-  /** The weight of the item, in units defined by the store. */
-  weight?: Maybe<Scalars['Float']>;
-};
+export type ConfigurableProduct = ProductInterface &
+  PhysicalProductInterface &
+  CustomizableProductInterface & {
+    __typename?: 'ConfigurableProduct';
+    /** The attribute set assigned to the product. */
+    attribute_set_id?: Maybe<Scalars['Int']>;
+    /** Relative canonical URL. This value is returned only if the system setting 'Use Canonical Link Meta Tag For Products' is enabled */
+    canonical_url?: Maybe<Scalars['String']>;
+    /** The categories assigned to a product. */
+    categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+    color?: Maybe<Scalars['Int']>;
+    /** An array of linked simple product items */
+    configurable_options?: Maybe<Array<Maybe<ConfigurableProductOptions>>>;
+    /** The product's country of origin. */
+    country_of_manufacture?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was created. */
+    created_at?: Maybe<Scalars['String']>;
+    /** Crosssell Products */
+    crosssell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** Detailed information about the product. The value can include simple HTML tags. */
+    description?: Maybe<ComplexTextValue>;
+    /** Indicates whether a gift message is available. */
+    gift_message_available?: Maybe<Scalars['String']>;
+    /** The ID number assigned to the product. */
+    id?: Maybe<Scalars['Int']>;
+    /** The relative path to the main image on the product page. */
+    image?: Maybe<ProductImage>;
+    /** Indicates whether the product can be returned */
+    is_returnable?: Maybe<Scalars['String']>;
+    /** A number representing the product's manufacturer. */
+    manufacturer?: Maybe<Scalars['Int']>;
+    /** An array of Media Gallery objects. */
+    media_gallery?: Maybe<Array<Maybe<MediaGalleryInterface>>>;
+    /**
+     * An array of MediaGalleryEntry objects.
+     * @deprecated Use product's `media_gallery` instead
+     */
+    media_gallery_entries?: Maybe<Array<Maybe<MediaGalleryEntry>>>;
+    /** A brief overview of the product for search results listings, maximum 255 characters. */
+    meta_description?: Maybe<Scalars['String']>;
+    /** A comma-separated list of keywords that are visible only to search engines. */
+    meta_keyword?: Maybe<Scalars['String']>;
+    /** A string that is displayed in the title bar and tab of the browser and in search results lists. */
+    meta_title?: Maybe<Scalars['String']>;
+    /** The product name. Customers use this name to identify the product. */
+    name?: Maybe<Scalars['String']>;
+    /** The beginning date for new product listings, and determines if the product is featured as a new product. */
+    new_from_date?: Maybe<Scalars['String']>;
+    /** The end date for new product listings. */
+    new_to_date?: Maybe<Scalars['String']>;
+    /** Product stock only x left count */
+    only_x_left_in_stock?: Maybe<Scalars['Float']>;
+    /** An array of options for a customizable product. */
+    options?: Maybe<Array<Maybe<CustomizableOptionInterface>>>;
+    /** If the product has multiple options, determines where they appear on the product page. */
+    options_container?: Maybe<Scalars['String']>;
+    /**
+     * A ProductPrices object, indicating the price of an item.
+     * @deprecated Use price_range for product price information.
+     */
+    price?: Maybe<ProductPrices>;
+    /** A PriceRange object, indicating the range of prices for the product */
+    price_range: PriceRange;
+    /** An array of TierPrice objects. */
+    price_tiers?: Maybe<Array<Maybe<TierPrice>>>;
+    /** An array of ProductLinks objects. */
+    product_links?: Maybe<Array<Maybe<ProductLinksInterface>>>;
+    /** Related Products */
+    related_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** A short description of the product. Its use depends on the theme. */
+    short_description?: Maybe<ComplexTextValue>;
+    /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
+    sku?: Maybe<Scalars['String']>;
+    /** The relative path to the small image, which is used on catalog pages. */
+    small_image?: Maybe<ProductImage>;
+    /** The beginning date that a product has a special price. */
+    special_from_date?: Maybe<Scalars['String']>;
+    /** The discounted price of the product. */
+    special_price?: Maybe<Scalars['Float']>;
+    /** The end date that a product has a special price. */
+    special_to_date?: Maybe<Scalars['String']>;
+    /** Stock status of the product */
+    stock_status?: Maybe<ProductStockStatus>;
+    /** The file name of a swatch image */
+    swatch_image?: Maybe<Scalars['String']>;
+    /** The relative path to the product's thumbnail image. */
+    thumbnail?: Maybe<ProductImage>;
+    /**
+     * The price when tier pricing is in effect and the items purchased threshold has been reached.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_price?: Maybe<Scalars['Float']>;
+    /**
+     * An array of ProductTierPrices objects.
+     * @deprecated Use price_tiers for product tier price information.
+     */
+    tier_prices?: Maybe<Array<Maybe<ProductTierPrices>>>;
+    /**
+     * One of simple, virtual, bundle, downloadable, grouped, or configurable.
+     * @deprecated Use __typename instead.
+     */
+    type_id?: Maybe<Scalars['String']>;
+    /** Timestamp indicating when the product was updated. */
+    updated_at?: Maybe<Scalars['String']>;
+    /** Upsell Products */
+    upsell_products?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** The part of the URL that identifies the product */
+    url_key?: Maybe<Scalars['String']>;
+    /** @deprecated Use product's `canonical_url` or url rewrites instead */
+    url_path?: Maybe<Scalars['String']>;
+    /** URL rewrites list */
+    url_rewrites?: Maybe<Array<Maybe<UrlRewrite>>>;
+    /** The part of the product URL that is appended after the url key */
+    url_suffix?: Maybe<Scalars['String']>;
+    /** An array of variants of products */
+    variants?: Maybe<Array<Maybe<ConfigurableVariant>>>;
+    /**
+     * An array of websites in which the product is available.
+     * @deprecated The field should not be used on the storefront.
+     */
+    websites?: Maybe<Array<Maybe<Website>>>;
+    /** The weight of the item, in units defined by the store. */
+    weight?: Maybe<Scalars['Float']>;
+  };
 
 /** ConfigurableProductOptions defines configurable attributes for the specified product */
 export type ConfigurableProductOptions = {
@@ -5022,26 +4993,27 @@ export type SwatchData = {
   value?: Maybe<Scalars['String']>;
 };
 
-export type SwatchLayerFilterItem = LayerFilterItemInterface & SwatchLayerFilterItemInterface & {
-  __typename?: 'SwatchLayerFilterItem';
-  /**
-   * Count of items by filter.
-   * @deprecated Use AggregationOption.count instead.
-   */
-  items_count?: Maybe<Scalars['Int']>;
-  /**
-   * Filter label.
-   * @deprecated Use AggregationOption.label instead.
-   */
-  label?: Maybe<Scalars['String']>;
-  /** Data required to render swatch filter item */
-  swatch_data?: Maybe<SwatchData>;
-  /**
-   * Value for filter request variable to be used in query.
-   * @deprecated Use AggregationOption.value instead.
-   */
-  value_string?: Maybe<Scalars['String']>;
-};
+export type SwatchLayerFilterItem = LayerFilterItemInterface &
+  SwatchLayerFilterItemInterface & {
+    __typename?: 'SwatchLayerFilterItem';
+    /**
+     * Count of items by filter.
+     * @deprecated Use AggregationOption.count instead.
+     */
+    items_count?: Maybe<Scalars['Int']>;
+    /**
+     * Filter label.
+     * @deprecated Use AggregationOption.label instead.
+     */
+    label?: Maybe<Scalars['String']>;
+    /** Data required to render swatch filter item */
+    swatch_data?: Maybe<SwatchData>;
+    /**
+     * Value for filter request variable to be used in query.
+     * @deprecated Use AggregationOption.value instead.
+     */
+    value_string?: Maybe<Scalars['String']>;
+  };
 
 export type ImageSwatchData = SwatchDataInterface & {
   __typename?: 'ImageSwatchData';
@@ -5065,7 +5037,7 @@ export type ColorSwatchData = SwatchDataInterface & {
 
 /**
  * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
- * 
+ *
  * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
  */
 export type __Type = {
@@ -5082,20 +5054,18 @@ export type __Type = {
   ofType?: Maybe<__Type>;
 };
 
-
 /**
  * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
- * 
+ *
  * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
  */
 export type __TypeFieldsArgs = {
   includeDeprecated?: Maybe<Scalars['Boolean']>;
 };
 
-
 /**
  * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
- * 
+ *
  * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
  */
 export type __TypeEnumValuesArgs = {
@@ -5119,7 +5089,7 @@ export enum __TypeKind {
   /** Indicates this type is a list. `ofType` is a valid field. */
   List = 'LIST',
   /** Indicates this type is a non-null. `ofType` is a valid field. */
-  NonNull = 'NON_NULL'
+  NonNull = 'NON_NULL',
 }
 
 /** Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type. */
@@ -5152,263 +5122,516 @@ export type __EnumValue = {
   deprecationReason?: Maybe<Scalars['String']>;
 };
 
-type ProductDetails_VirtualProduct_Fragment = (
-  { __typename: 'VirtualProduct' }
-  & Pick<VirtualProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_VirtualProduct_Fragment = {
+  __typename: 'VirtualProduct';
+} & Pick<
+  VirtualProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-type ProductDetails_SimpleProduct_Fragment = (
-  { __typename: 'SimpleProduct' }
-  & Pick<SimpleProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_SimpleProduct_Fragment = {
+  __typename: 'SimpleProduct';
+} & Pick<
+  SimpleProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-type ProductDetails_DownloadableProduct_Fragment = (
-  { __typename: 'DownloadableProduct' }
-  & Pick<DownloadableProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_DownloadableProduct_Fragment = {
+  __typename: 'DownloadableProduct';
+} & Pick<
+  DownloadableProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-type ProductDetails_GiftCardProduct_Fragment = (
-  { __typename: 'GiftCardProduct' }
-  & Pick<GiftCardProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_GiftCardProduct_Fragment = {
+  __typename: 'GiftCardProduct';
+} & Pick<
+  GiftCardProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-type ProductDetails_BundleProduct_Fragment = (
-  { __typename: 'BundleProduct' }
-  & Pick<BundleProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_BundleProduct_Fragment = {
+  __typename: 'BundleProduct';
+} & Pick<
+  BundleProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-type ProductDetails_GroupedProduct_Fragment = (
-  { __typename: 'GroupedProduct' }
-  & Pick<GroupedProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_GroupedProduct_Fragment = {
+  __typename: 'GroupedProduct';
+} & Pick<
+  GroupedProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-type ProductDetails_ConfigurableProduct_Fragment = (
-  { __typename: 'ConfigurableProduct' }
-  & Pick<ConfigurableProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-  & { configurable_options?: Maybe<Array<Maybe<(
-    { __typename?: 'ConfigurableProductOptions' }
-    & Pick<ConfigurableProductOptions, 'attribute_code' | 'attribute_id' | 'id' | 'label'>
-    & { values?: Maybe<Array<Maybe<(
-      { __typename?: 'ConfigurableProductOptionsValues' }
-      & Pick<ConfigurableProductOptionsValues, 'default_label' | 'label' | 'store_label' | 'use_default_value' | 'value_index'>
-      & { swatch_data?: Maybe<(
-        { __typename?: 'ImageSwatchData' }
-        & Pick<ImageSwatchData, 'thumbnail' | 'value'>
-      ) | (
-        { __typename?: 'TextSwatchData' }
-        & Pick<TextSwatchData, 'value'>
-      ) | (
-        { __typename?: 'ColorSwatchData' }
-        & Pick<ColorSwatchData, 'value'>
-      )> }
-    )>>> }
-  )>>>, variants?: Maybe<Array<Maybe<(
-    { __typename?: 'ConfigurableVariant' }
-    & { attributes?: Maybe<Array<Maybe<(
-      { __typename?: 'ConfigurableAttributeOption' }
-      & Pick<ConfigurableAttributeOption, 'code' | 'value_index'>
-    )>>>, product?: Maybe<(
-      { __typename?: 'SimpleProduct' }
-      & Pick<SimpleProduct, 'id' | 'sku' | 'stock_status'>
-      & { media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'disabled' | 'file' | 'label' | 'position'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )> }
-    )> }
-  )>>>, categories?: Maybe<Array<Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_id'>
-    )>>> }
-  )>>>, description?: Maybe<(
-    { __typename?: 'ComplexTextValue' }
-    & Pick<ComplexTextValue, 'html'>
-  )>, media_gallery_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'MediaGalleryEntry' }
-    & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-  )>>>, price?: Maybe<(
-    { __typename?: 'ProductPrices' }
-    & { regularPrice?: Maybe<(
-      { __typename?: 'Price' }
-      & { amount?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'currency' | 'value'>
-      )> }
-    )> }
-  )>, small_image?: Maybe<(
-    { __typename?: 'ProductImage' }
-    & Pick<ProductImage, 'url'>
-  )> }
-);
+type ProductDetails_ConfigurableProduct_Fragment = {
+  __typename: 'ConfigurableProduct';
+} & Pick<
+  ConfigurableProduct,
+  | 'id'
+  | 'meta_title'
+  | 'meta_keyword'
+  | 'meta_description'
+  | 'name'
+  | 'sku'
+  | 'url_key'
+> & {
+    configurable_options?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'ConfigurableProductOptions' } & Pick<
+            ConfigurableProductOptions,
+            'attribute_code' | 'attribute_id' | 'id' | 'label'
+          > & {
+              values?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'ConfigurableProductOptionsValues' } & Pick<
+                      ConfigurableProductOptionsValues,
+                      | 'default_label'
+                      | 'label'
+                      | 'store_label'
+                      | 'use_default_value'
+                      | 'value_index'
+                    > & {
+                        swatch_data?: Maybe<
+                          | ({ __typename?: 'ImageSwatchData' } & Pick<
+                              ImageSwatchData,
+                              'thumbnail' | 'value'
+                            >)
+                          | ({ __typename?: 'TextSwatchData' } & Pick<
+                              TextSwatchData,
+                              'value'
+                            >)
+                          | ({ __typename?: 'ColorSwatchData' } & Pick<
+                              ColorSwatchData,
+                              'value'
+                            >)
+                        >;
+                      }
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    variants?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'ConfigurableVariant' } & {
+            attributes?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'ConfigurableAttributeOption' } & Pick<
+                    ConfigurableAttributeOption,
+                    'code' | 'value_index'
+                  >
+                >
+              >
+            >;
+            product?: Maybe<
+              { __typename?: 'SimpleProduct' } & Pick<
+                SimpleProduct,
+                'id' | 'sku' | 'stock_status'
+              > & {
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'disabled' | 'file' | 'label' | 'position'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                }
+            >;
+          }
+        >
+      >
+    >;
+    categories?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+              breadcrumbs?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'Breadcrumb' } & Pick<
+                      Breadcrumb,
+                      'category_id'
+                    >
+                  >
+                >
+              >;
+            }
+        >
+      >
+    >;
+    description?: Maybe<
+      { __typename?: 'ComplexTextValue' } & Pick<ComplexTextValue, 'html'>
+    >;
+    media_gallery_entries?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'MediaGalleryEntry' } & Pick<
+            MediaGalleryEntry,
+            'id' | 'label' | 'position' | 'disabled' | 'file'
+          >
+        >
+      >
+    >;
+    price?: Maybe<
+      { __typename?: 'ProductPrices' } & {
+        regularPrice?: Maybe<
+          { __typename?: 'Price' } & {
+            amount?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'currency' | 'value'>
+            >;
+          }
+        >;
+      }
+    >;
+    small_image?: Maybe<
+      { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+    >;
+  };
 
-export type ProductDetailsFragment = ProductDetails_VirtualProduct_Fragment | ProductDetails_SimpleProduct_Fragment | ProductDetails_DownloadableProduct_Fragment | ProductDetails_GiftCardProduct_Fragment | ProductDetails_BundleProduct_Fragment | ProductDetails_GroupedProduct_Fragment | ProductDetails_ConfigurableProduct_Fragment;
+export type ProductDetailsFragment =
+  | ProductDetails_VirtualProduct_Fragment
+  | ProductDetails_SimpleProduct_Fragment
+  | ProductDetails_DownloadableProduct_Fragment
+  | ProductDetails_GiftCardProduct_Fragment
+  | ProductDetails_BundleProduct_Fragment
+  | ProductDetails_GroupedProduct_Fragment
+  | ProductDetails_ConfigurableProduct_Fragment;
 
 export type CreateAccountMutationVariables = Exact<{
   email: Scalars['String'];
@@ -5418,693 +5641,1034 @@ export type CreateAccountMutationVariables = Exact<{
   is_subscribed: Scalars['Boolean'];
 }>;
 
+export type CreateAccountMutation = { __typename?: 'Mutation' } & {
+  createCustomer?: Maybe<
+    { __typename?: 'CustomerOutput' } & {
+      customer: { __typename?: 'Customer' } & Pick<Customer, 'id'>;
+    }
+  >;
+};
 
-export type CreateAccountMutation = (
-  { __typename?: 'Mutation' }
-  & { createCustomer?: Maybe<(
-    { __typename?: 'CustomerOutput' }
-    & { customer: (
-      { __typename?: 'Customer' }
-      & Pick<Customer, 'id'>
-    ) }
-  )> }
-);
+export type CreateCartMutationVariables = Exact<{ [key: string]: never }>;
 
-export type CreateCartMutationVariables = Exact<{ [key: string]: never; }>;
+export type CreateCartMutation = { __typename?: 'Mutation' } & {
+  cartId: Mutation['createEmptyCart'];
+};
 
+export type GetAllCountriesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type CreateCartMutation = (
-  { __typename?: 'Mutation' }
-  & { cartId: Mutation['createEmptyCart'] }
-);
-
-export type GetAllCountriesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllCountriesQuery = (
-  { __typename?: 'Query' }
-  & { countries?: Maybe<Array<Maybe<(
-    { __typename?: 'Country' }
-    & Pick<Country, 'id'>
-    & { available_regions?: Maybe<Array<Maybe<(
-      { __typename?: 'Region' }
-      & Pick<Region, 'code' | 'id' | 'name'>
-    )>>> }
-  )>>> }
-);
+export type GetAllCountriesQuery = { __typename?: 'Query' } & {
+  countries?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Country' } & Pick<Country, 'id'> & {
+            available_regions?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Region' } & Pick<
+                    Region,
+                    'code' | 'id' | 'name'
+                  >
+                >
+              >
+            >;
+          }
+      >
+    >
+  >;
+};
 
 export type GetBreadcrumbDataQueryVariables = Exact<{
   category_id: Scalars['Int'];
 }>;
 
-
-export type GetBreadcrumbDataQuery = (
-  { __typename?: 'Query' }
-  & { storeConfig?: Maybe<(
-    { __typename?: 'StoreConfig' }
-    & Pick<StoreConfig, 'id' | 'category_url_suffix'>
-  )>, category?: Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id' | 'name' | 'url_path'>
-    & { breadcrumbs?: Maybe<Array<Maybe<(
-      { __typename?: 'Breadcrumb' }
-      & Pick<Breadcrumb, 'category_level' | 'category_name' | 'category_url_path'>
-    )>>> }
-  )> }
-);
+export type GetBreadcrumbDataQuery = { __typename?: 'Query' } & {
+  storeConfig?: Maybe<
+    { __typename?: 'StoreConfig' } & Pick<
+      StoreConfig,
+      'id' | 'category_url_suffix'
+    >
+  >;
+  category?: Maybe<
+    { __typename?: 'CategoryTree' } & Pick<
+      CategoryTree,
+      'id' | 'name' | 'url_path'
+    > & {
+        breadcrumbs?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'Breadcrumb' } & Pick<
+                Breadcrumb,
+                'category_level' | 'category_name' | 'category_url_path'
+              >
+            >
+          >
+        >;
+      }
+  >;
+};
 
 export type GetCartDetailsQueryVariables = Exact<{
   cartId: Scalars['String'];
 }>;
 
-
-export type GetCartDetailsQuery = (
-  { __typename?: 'Query' }
-  & { cart?: Maybe<(
-    { __typename?: 'Cart' }
-    & Pick<Cart, 'id'>
-    & { items?: Maybe<Array<Maybe<(
-      { __typename?: 'SimpleCartItem' }
-      & Pick<SimpleCartItem, 'id' | 'quantity'>
-      & { prices?: Maybe<(
-        { __typename?: 'CartItemPrices' }
-        & { price: (
-          { __typename?: 'Money' }
-          & Pick<Money, 'value'>
-        ) }
-      )>, product: (
-        { __typename?: 'VirtualProduct' }
-        & Pick<VirtualProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'SimpleProduct' }
-        & Pick<SimpleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'DownloadableProduct' }
-        & Pick<DownloadableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GiftCardProduct' }
-        & Pick<GiftCardProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'BundleProduct' }
-        & Pick<BundleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GroupedProduct' }
-        & Pick<GroupedProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'ConfigurableProduct' }
-        & Pick<ConfigurableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) }
-    ) | (
-      { __typename?: 'VirtualCartItem' }
-      & Pick<VirtualCartItem, 'id' | 'quantity'>
-      & { prices?: Maybe<(
-        { __typename?: 'CartItemPrices' }
-        & { price: (
-          { __typename?: 'Money' }
-          & Pick<Money, 'value'>
-        ) }
-      )>, product: (
-        { __typename?: 'VirtualProduct' }
-        & Pick<VirtualProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'SimpleProduct' }
-        & Pick<SimpleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'DownloadableProduct' }
-        & Pick<DownloadableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GiftCardProduct' }
-        & Pick<GiftCardProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'BundleProduct' }
-        & Pick<BundleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GroupedProduct' }
-        & Pick<GroupedProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'ConfigurableProduct' }
-        & Pick<ConfigurableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) }
-    ) | (
-      { __typename?: 'DownloadableCartItem' }
-      & Pick<DownloadableCartItem, 'id' | 'quantity'>
-      & { prices?: Maybe<(
-        { __typename?: 'CartItemPrices' }
-        & { price: (
-          { __typename?: 'Money' }
-          & Pick<Money, 'value'>
-        ) }
-      )>, product: (
-        { __typename?: 'VirtualProduct' }
-        & Pick<VirtualProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'SimpleProduct' }
-        & Pick<SimpleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'DownloadableProduct' }
-        & Pick<DownloadableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GiftCardProduct' }
-        & Pick<GiftCardProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'BundleProduct' }
-        & Pick<BundleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GroupedProduct' }
-        & Pick<GroupedProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'ConfigurableProduct' }
-        & Pick<ConfigurableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) }
-    ) | (
-      { __typename?: 'BundleCartItem' }
-      & Pick<BundleCartItem, 'id' | 'quantity'>
-      & { prices?: Maybe<(
-        { __typename?: 'CartItemPrices' }
-        & { price: (
-          { __typename?: 'Money' }
-          & Pick<Money, 'value'>
-        ) }
-      )>, product: (
-        { __typename?: 'VirtualProduct' }
-        & Pick<VirtualProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'SimpleProduct' }
-        & Pick<SimpleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'DownloadableProduct' }
-        & Pick<DownloadableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GiftCardProduct' }
-        & Pick<GiftCardProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'BundleProduct' }
-        & Pick<BundleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GroupedProduct' }
-        & Pick<GroupedProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'ConfigurableProduct' }
-        & Pick<ConfigurableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) }
-    ) | (
-      { __typename?: 'ConfigurableCartItem' }
-      & Pick<ConfigurableCartItem, 'id' | 'quantity'>
-      & { configurable_options: Array<Maybe<(
-        { __typename?: 'SelectedConfigurableOption' }
-        & Pick<SelectedConfigurableOption, 'id' | 'option_label' | 'value_id' | 'value_label'>
-      )>>, prices?: Maybe<(
-        { __typename?: 'CartItemPrices' }
-        & { price: (
-          { __typename?: 'Money' }
-          & Pick<Money, 'value'>
-        ) }
-      )>, product: (
-        { __typename?: 'VirtualProduct' }
-        & Pick<VirtualProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'SimpleProduct' }
-        & Pick<SimpleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'DownloadableProduct' }
-        & Pick<DownloadableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GiftCardProduct' }
-        & Pick<GiftCardProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'BundleProduct' }
-        & Pick<BundleProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'GroupedProduct' }
-        & Pick<GroupedProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) | (
-        { __typename?: 'ConfigurableProduct' }
-        & Pick<ConfigurableProduct, 'id' | 'name' | 'sku'>
-        & { small_image?: Maybe<(
-          { __typename?: 'ProductImage' }
-          & Pick<ProductImage, 'url' | 'label'>
-        )>, price?: Maybe<(
-          { __typename?: 'ProductPrices' }
-          & { regularPrice?: Maybe<(
-            { __typename?: 'Price' }
-            & { amount?: Maybe<(
-              { __typename?: 'Money' }
-              & Pick<Money, 'value'>
-            )> }
-          )> }
-        )> }
-      ) }
-    )>>>, prices?: Maybe<(
-      { __typename?: 'CartPrices' }
-      & { grand_total?: Maybe<(
-        { __typename?: 'Money' }
-        & Pick<Money, 'value' | 'currency'>
-      )> }
-    )> }
-  )> }
-);
+export type GetCartDetailsQuery = { __typename?: 'Query' } & {
+  cart?: Maybe<
+    { __typename?: 'Cart' } & Pick<Cart, 'id'> & {
+        items?: Maybe<
+          Array<
+            Maybe<
+              | ({ __typename?: 'SimpleCartItem' } & Pick<
+                  SimpleCartItem,
+                  'id' | 'quantity'
+                > & {
+                    prices?: Maybe<
+                      { __typename?: 'CartItemPrices' } & {
+                        price: { __typename?: 'Money' } & Pick<Money, 'value'>;
+                      }
+                    >;
+                    product:
+                      | ({ __typename?: 'VirtualProduct' } & Pick<
+                          VirtualProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'SimpleProduct' } & Pick<
+                          SimpleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'DownloadableProduct' } & Pick<
+                          DownloadableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GiftCardProduct' } & Pick<
+                          GiftCardProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'BundleProduct' } & Pick<
+                          BundleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GroupedProduct' } & Pick<
+                          GroupedProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                          ConfigurableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          });
+                  })
+              | ({ __typename?: 'VirtualCartItem' } & Pick<
+                  VirtualCartItem,
+                  'id' | 'quantity'
+                > & {
+                    prices?: Maybe<
+                      { __typename?: 'CartItemPrices' } & {
+                        price: { __typename?: 'Money' } & Pick<Money, 'value'>;
+                      }
+                    >;
+                    product:
+                      | ({ __typename?: 'VirtualProduct' } & Pick<
+                          VirtualProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'SimpleProduct' } & Pick<
+                          SimpleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'DownloadableProduct' } & Pick<
+                          DownloadableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GiftCardProduct' } & Pick<
+                          GiftCardProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'BundleProduct' } & Pick<
+                          BundleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GroupedProduct' } & Pick<
+                          GroupedProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                          ConfigurableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          });
+                  })
+              | ({ __typename?: 'DownloadableCartItem' } & Pick<
+                  DownloadableCartItem,
+                  'id' | 'quantity'
+                > & {
+                    prices?: Maybe<
+                      { __typename?: 'CartItemPrices' } & {
+                        price: { __typename?: 'Money' } & Pick<Money, 'value'>;
+                      }
+                    >;
+                    product:
+                      | ({ __typename?: 'VirtualProduct' } & Pick<
+                          VirtualProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'SimpleProduct' } & Pick<
+                          SimpleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'DownloadableProduct' } & Pick<
+                          DownloadableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GiftCardProduct' } & Pick<
+                          GiftCardProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'BundleProduct' } & Pick<
+                          BundleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GroupedProduct' } & Pick<
+                          GroupedProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                          ConfigurableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          });
+                  })
+              | ({ __typename?: 'BundleCartItem' } & Pick<
+                  BundleCartItem,
+                  'id' | 'quantity'
+                > & {
+                    prices?: Maybe<
+                      { __typename?: 'CartItemPrices' } & {
+                        price: { __typename?: 'Money' } & Pick<Money, 'value'>;
+                      }
+                    >;
+                    product:
+                      | ({ __typename?: 'VirtualProduct' } & Pick<
+                          VirtualProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'SimpleProduct' } & Pick<
+                          SimpleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'DownloadableProduct' } & Pick<
+                          DownloadableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GiftCardProduct' } & Pick<
+                          GiftCardProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'BundleProduct' } & Pick<
+                          BundleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GroupedProduct' } & Pick<
+                          GroupedProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                          ConfigurableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          });
+                  })
+              | ({ __typename?: 'ConfigurableCartItem' } & Pick<
+                  ConfigurableCartItem,
+                  'id' | 'quantity'
+                > & {
+                    configurable_options: Array<
+                      Maybe<
+                        { __typename?: 'SelectedConfigurableOption' } & Pick<
+                          SelectedConfigurableOption,
+                          'id' | 'option_label' | 'value_id' | 'value_label'
+                        >
+                      >
+                    >;
+                    prices?: Maybe<
+                      { __typename?: 'CartItemPrices' } & {
+                        price: { __typename?: 'Money' } & Pick<Money, 'value'>;
+                      }
+                    >;
+                    product:
+                      | ({ __typename?: 'VirtualProduct' } & Pick<
+                          VirtualProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'SimpleProduct' } & Pick<
+                          SimpleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'DownloadableProduct' } & Pick<
+                          DownloadableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GiftCardProduct' } & Pick<
+                          GiftCardProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'BundleProduct' } & Pick<
+                          BundleProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'GroupedProduct' } & Pick<
+                          GroupedProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          })
+                      | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                          ConfigurableProduct,
+                          'id' | 'name' | 'sku'
+                        > & {
+                            small_image?: Maybe<
+                              { __typename?: 'ProductImage' } & Pick<
+                                ProductImage,
+                                'url' | 'label'
+                              >
+                            >;
+                            price?: Maybe<
+                              { __typename?: 'ProductPrices' } & {
+                                regularPrice?: Maybe<
+                                  { __typename?: 'Price' } & {
+                                    amount?: Maybe<
+                                      { __typename?: 'Money' } & Pick<
+                                        Money,
+                                        'value'
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                            >;
+                          });
+                  })
+            >
+          >
+        >;
+        prices?: Maybe<
+          { __typename?: 'CartPrices' } & {
+            grand_total?: Maybe<
+              { __typename?: 'Money' } & Pick<Money, 'value' | 'currency'>
+            >;
+          }
+        >;
+      }
+  >;
+};
 
 export type CategoryQueryVariables = Exact<{
   id: Scalars['Int'];
@@ -6115,873 +6679,1663 @@ export type CategoryQueryVariables = Exact<{
   sort?: Maybe<ProductAttributeSortInput>;
 }>;
 
-
-export type CategoryQuery = (
-  { __typename?: 'Query' }
-  & { category?: Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id' | 'description' | 'name' | 'product_count' | 'meta_title' | 'meta_keywords' | 'meta_description'>
-  )>, products?: Maybe<(
-    { __typename?: 'Products' }
-    & Pick<Products, 'total_count'>
-    & { items?: Maybe<Array<Maybe<(
-      { __typename: 'VirtualProduct' }
-      & Pick<VirtualProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'SimpleProduct' }
-      & Pick<SimpleProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'DownloadableProduct' }
-      & Pick<DownloadableProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'GiftCardProduct' }
-      & Pick<GiftCardProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'BundleProduct' }
-      & Pick<BundleProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'GroupedProduct' }
-      & Pick<GroupedProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'ConfigurableProduct' }
-      & Pick<ConfigurableProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { configurable_options?: Maybe<Array<Maybe<(
-        { __typename?: 'ConfigurableProductOptions' }
-        & Pick<ConfigurableProductOptions, 'attribute_code' | 'attribute_id' | 'id' | 'label'>
-        & { values?: Maybe<Array<Maybe<(
-          { __typename?: 'ConfigurableProductOptionsValues' }
-          & Pick<ConfigurableProductOptionsValues, 'default_label' | 'label' | 'store_label' | 'use_default_value' | 'value_index'>
-          & { swatch_data?: Maybe<(
-            { __typename?: 'ImageSwatchData' }
-            & Pick<ImageSwatchData, 'thumbnail' | 'value'>
-          ) | (
-            { __typename?: 'TextSwatchData' }
-            & Pick<TextSwatchData, 'value'>
-          ) | (
-            { __typename?: 'ColorSwatchData' }
-            & Pick<ColorSwatchData, 'value'>
-          )> }
-        )>>> }
-      )>>>, variants?: Maybe<Array<Maybe<(
-        { __typename?: 'ConfigurableVariant' }
-        & { attributes?: Maybe<Array<Maybe<(
-          { __typename?: 'ConfigurableAttributeOption' }
-          & Pick<ConfigurableAttributeOption, 'code' | 'value_index'>
-        )>>>, product?: Maybe<(
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'sku' | 'stock_status'>
-          & { media_gallery_entries?: Maybe<Array<Maybe<(
-            { __typename?: 'MediaGalleryEntry' }
-            & Pick<MediaGalleryEntry, 'id' | 'disabled' | 'file' | 'label' | 'position'>
-          )>>> }
-        )> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    )>>>, page_info?: Maybe<(
-      { __typename?: 'SearchResultPageInfo' }
-      & Pick<SearchResultPageInfo, 'total_pages'>
-    )> }
-  )> }
-);
+export type CategoryQuery = { __typename?: 'Query' } & {
+  category?: Maybe<
+    { __typename?: 'CategoryTree' } & Pick<
+      CategoryTree,
+      | 'id'
+      | 'description'
+      | 'name'
+      | 'product_count'
+      | 'meta_title'
+      | 'meta_keywords'
+      | 'meta_description'
+    >
+  >;
+  products?: Maybe<
+    { __typename?: 'Products' } & Pick<Products, 'total_count'> & {
+        items?: Maybe<
+          Array<
+            Maybe<
+              | ({ __typename: 'VirtualProduct' } & Pick<
+                  VirtualProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'SimpleProduct' } & Pick<
+                  SimpleProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'DownloadableProduct' } & Pick<
+                  DownloadableProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'GiftCardProduct' } & Pick<
+                  GiftCardProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'BundleProduct' } & Pick<
+                  BundleProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'GroupedProduct' } & Pick<
+                  GroupedProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'ConfigurableProduct' } & Pick<
+                  ConfigurableProduct,
+                  | 'id'
+                  | 'meta_title'
+                  | 'meta_keyword'
+                  | 'meta_description'
+                  | 'name'
+                  | 'sku'
+                  | 'url_key'
+                > & {
+                    configurable_options?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'ConfigurableProductOptions' } & Pick<
+                            ConfigurableProductOptions,
+                            'attribute_code' | 'attribute_id' | 'id' | 'label'
+                          > & {
+                              values?: Maybe<
+                                Array<
+                                  Maybe<
+                                    {
+                                      __typename?: 'ConfigurableProductOptionsValues';
+                                    } & Pick<
+                                      ConfigurableProductOptionsValues,
+                                      | 'default_label'
+                                      | 'label'
+                                      | 'store_label'
+                                      | 'use_default_value'
+                                      | 'value_index'
+                                    > & {
+                                        swatch_data?: Maybe<
+                                          | ({
+                                              __typename?: 'ImageSwatchData';
+                                            } & Pick<
+                                              ImageSwatchData,
+                                              'thumbnail' | 'value'
+                                            >)
+                                          | ({
+                                              __typename?: 'TextSwatchData';
+                                            } & Pick<TextSwatchData, 'value'>)
+                                          | ({
+                                              __typename?: 'ColorSwatchData';
+                                            } & Pick<ColorSwatchData, 'value'>)
+                                        >;
+                                      }
+                                  >
+                                >
+                              >;
+                            }
+                        >
+                      >
+                    >;
+                    variants?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'ConfigurableVariant' } & {
+                            attributes?: Maybe<
+                              Array<
+                                Maybe<
+                                  {
+                                    __typename?: 'ConfigurableAttributeOption';
+                                  } & Pick<
+                                    ConfigurableAttributeOption,
+                                    'code' | 'value_index'
+                                  >
+                                >
+                              >
+                            >;
+                            product?: Maybe<
+                              { __typename?: 'SimpleProduct' } & Pick<
+                                SimpleProduct,
+                                'id' | 'sku' | 'stock_status'
+                              > & {
+                                  media_gallery_entries?: Maybe<
+                                    Array<
+                                      Maybe<
+                                        {
+                                          __typename?: 'MediaGalleryEntry';
+                                        } & Pick<
+                                          MediaGalleryEntry,
+                                          | 'id'
+                                          | 'disabled'
+                                          | 'file'
+                                          | 'label'
+                                          | 'position'
+                                        >
+                                      >
+                                    >
+                                  >;
+                                }
+                            >;
+                          }
+                        >
+                      >
+                    >;
+                    description?: Maybe<
+                      { __typename?: 'ComplexTextValue' } & Pick<
+                        ComplexTextValue,
+                        'html'
+                      >
+                    >;
+                    media_gallery_entries?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'MediaGalleryEntry' } & Pick<
+                            MediaGalleryEntry,
+                            'id' | 'label' | 'position' | 'disabled' | 'file'
+                          >
+                        >
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'currency' | 'value'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                  })
+            >
+          >
+        >;
+        page_info?: Maybe<
+          { __typename?: 'SearchResultPageInfo' } & Pick<
+            SearchResultPageInfo,
+            'total_pages'
+          >
+        >;
+      }
+  >;
+};
 
 export type CategoryListQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type CategoryListQuery = (
-  { __typename?: 'Query' }
-  & { category?: Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id'>
-    & { children?: Maybe<Array<Maybe<(
-      { __typename?: 'CategoryTree' }
-      & Pick<CategoryTree, 'id' | 'name' | 'url_key' | 'url_path' | 'children_count' | 'path' | 'image'>
-      & { productImagePreview?: Maybe<(
-        { __typename?: 'CategoryProducts' }
-        & { items?: Maybe<Array<Maybe<(
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id'>
-          & { small_image?: Maybe<(
-            { __typename?: 'ProductImage' }
-            & Pick<ProductImage, 'url'>
-          )> }
-        )>>> }
-      )> }
-    )>>> }
-  )> }
-);
+export type CategoryListQuery = { __typename?: 'Query' } & {
+  category?: Maybe<
+    { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id'> & {
+        children?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'CategoryTree' } & Pick<
+                CategoryTree,
+                | 'id'
+                | 'name'
+                | 'url_key'
+                | 'url_path'
+                | 'children_count'
+                | 'path'
+                | 'image'
+              > & {
+                  productImagePreview?: Maybe<
+                    { __typename?: 'CategoryProducts' } & {
+                      items?: Maybe<
+                        Array<
+                          Maybe<
+                            | ({ __typename?: 'VirtualProduct' } & Pick<
+                                VirtualProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                            | ({ __typename?: 'SimpleProduct' } & Pick<
+                                SimpleProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                            | ({ __typename?: 'DownloadableProduct' } & Pick<
+                                DownloadableProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                            | ({ __typename?: 'GiftCardProduct' } & Pick<
+                                GiftCardProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                            | ({ __typename?: 'BundleProduct' } & Pick<
+                                BundleProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                            | ({ __typename?: 'GroupedProduct' } & Pick<
+                                GroupedProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                            | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                                ConfigurableProduct,
+                                'id'
+                              > & {
+                                  small_image?: Maybe<
+                                    { __typename?: 'ProductImage' } & Pick<
+                                      ProductImage,
+                                      'url'
+                                    >
+                                  >;
+                                })
+                          >
+                        >
+                      >;
+                    }
+                  >;
+                }
+            >
+          >
+        >;
+      }
+  >;
+};
 
 export type GetCategoryNameQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type GetCategoryNameQuery = (
-  { __typename?: 'Query' }
-  & { category?: Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id' | 'name'>
-  )> }
-);
+export type GetCategoryNameQuery = { __typename?: 'Query' } & {
+  category?: Maybe<
+    { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id' | 'name'>
+  >;
+};
 
 export type CmsBlocksQueryVariables = Exact<{
   identifiers: Array<Maybe<Scalars['String']>>;
 }>;
 
-
-export type CmsBlocksQuery = (
-  { __typename?: 'Query' }
-  & { cmsBlocks?: Maybe<(
-    { __typename?: 'CmsBlocks' }
-    & { items?: Maybe<Array<Maybe<(
-      { __typename?: 'CmsBlock' }
-      & Pick<CmsBlock, 'content' | 'identifier'>
-    )>>> }
-  )> }
-);
+export type CmsBlocksQuery = { __typename?: 'Query' } & {
+  cmsBlocks?: Maybe<
+    { __typename?: 'CmsBlocks' } & {
+      items?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'CmsBlock' } & Pick<
+              CmsBlock,
+              'content' | 'identifier'
+            >
+          >
+        >
+      >;
+    }
+  >;
+};
 
 export type GetCmsPageQueryVariables = Exact<{
   id: Scalars['Int'];
   onServer: Scalars['Boolean'];
 }>;
 
+export type GetCmsPageQuery = { __typename?: 'Query' } & {
+  cmsPage?: Maybe<
+    { __typename?: 'CmsPage' } & Pick<
+      CmsPage,
+      | 'url_key'
+      | 'content'
+      | 'content_heading'
+      | 'title'
+      | 'page_layout'
+      | 'meta_title'
+      | 'meta_keywords'
+      | 'meta_description'
+    >
+  >;
+};
 
-export type GetCmsPageQuery = (
-  { __typename?: 'Query' }
-  & { cmsPage?: Maybe<(
-    { __typename?: 'CmsPage' }
-    & Pick<CmsPage, 'url_key' | 'content' | 'content_heading' | 'title' | 'page_layout' | 'meta_title' | 'meta_keywords' | 'meta_description'>
-  )> }
-);
+export type GetCustomerQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetCustomerQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetCustomerQuery = (
-  { __typename?: 'Query' }
-  & { customer?: Maybe<(
-    { __typename?: 'Customer' }
-    & Pick<Customer, 'id' | 'email' | 'firstname' | 'lastname'>
-  )> }
-);
+export type GetCustomerQuery = { __typename?: 'Query' } & {
+  customer?: Maybe<
+    { __typename?: 'Customer' } & Pick<
+      Customer,
+      'id' | 'email' | 'firstname' | 'lastname'
+    >
+  >;
+};
 
 export type NavigationMenuQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-
-export type NavigationMenuQuery = (
-  { __typename?: 'Query' }
-  & { category?: Maybe<(
-    { __typename?: 'CategoryTree' }
-    & Pick<CategoryTree, 'id' | 'name'>
-    & { children?: Maybe<Array<Maybe<(
-      { __typename?: 'CategoryTree' }
-      & Pick<CategoryTree, 'children_count' | 'id' | 'include_in_menu' | 'name' | 'position' | 'url_path'>
-    )>>> }
-  )> }
-);
+export type NavigationMenuQuery = { __typename?: 'Query' } & {
+  category?: Maybe<
+    { __typename?: 'CategoryTree' } & Pick<CategoryTree, 'id' | 'name'> & {
+        children?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'CategoryTree' } & Pick<
+                CategoryTree,
+                | 'children_count'
+                | 'id'
+                | 'include_in_menu'
+                | 'name'
+                | 'position'
+                | 'url_path'
+              >
+            >
+          >
+        >;
+      }
+  >;
+};
 
 export type ProductDetailQueryVariables = Exact<{
   urlKey?: Maybe<Scalars['String']>;
   onServer: Scalars['Boolean'];
 }>;
 
-
-export type ProductDetailQuery = (
-  { __typename?: 'Query' }
-  & { productDetail?: Maybe<(
-    { __typename?: 'Products' }
-    & { items?: Maybe<Array<Maybe<(
-      { __typename: 'VirtualProduct' }
-      & Pick<VirtualProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'SimpleProduct' }
-      & Pick<SimpleProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'DownloadableProduct' }
-      & Pick<DownloadableProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'GiftCardProduct' }
-      & Pick<GiftCardProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'BundleProduct' }
-      & Pick<BundleProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'GroupedProduct' }
-      & Pick<GroupedProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    ) | (
-      { __typename: 'ConfigurableProduct' }
-      & Pick<ConfigurableProduct, 'id' | 'meta_title' | 'meta_keyword' | 'meta_description' | 'name' | 'sku' | 'url_key'>
-      & { configurable_options?: Maybe<Array<Maybe<(
-        { __typename?: 'ConfigurableProductOptions' }
-        & Pick<ConfigurableProductOptions, 'attribute_code' | 'attribute_id' | 'id' | 'label'>
-        & { values?: Maybe<Array<Maybe<(
-          { __typename?: 'ConfigurableProductOptionsValues' }
-          & Pick<ConfigurableProductOptionsValues, 'default_label' | 'label' | 'store_label' | 'use_default_value' | 'value_index'>
-          & { swatch_data?: Maybe<(
-            { __typename?: 'ImageSwatchData' }
-            & Pick<ImageSwatchData, 'thumbnail' | 'value'>
-          ) | (
-            { __typename?: 'TextSwatchData' }
-            & Pick<TextSwatchData, 'value'>
-          ) | (
-            { __typename?: 'ColorSwatchData' }
-            & Pick<ColorSwatchData, 'value'>
-          )> }
-        )>>> }
-      )>>>, variants?: Maybe<Array<Maybe<(
-        { __typename?: 'ConfigurableVariant' }
-        & { attributes?: Maybe<Array<Maybe<(
-          { __typename?: 'ConfigurableAttributeOption' }
-          & Pick<ConfigurableAttributeOption, 'code' | 'value_index'>
-        )>>>, product?: Maybe<(
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'sku' | 'stock_status'>
-          & { media_gallery_entries?: Maybe<Array<Maybe<(
-            { __typename?: 'MediaGalleryEntry' }
-            & Pick<MediaGalleryEntry, 'id' | 'disabled' | 'file' | 'label' | 'position'>
-          )>>>, price?: Maybe<(
-            { __typename?: 'ProductPrices' }
-            & { regularPrice?: Maybe<(
-              { __typename?: 'Price' }
-              & { amount?: Maybe<(
-                { __typename?: 'Money' }
-                & Pick<Money, 'currency' | 'value'>
-              )> }
-            )> }
-          )> }
-        )> }
-      )>>>, categories?: Maybe<Array<Maybe<(
-        { __typename?: 'CategoryTree' }
-        & Pick<CategoryTree, 'id'>
-        & { breadcrumbs?: Maybe<Array<Maybe<(
-          { __typename?: 'Breadcrumb' }
-          & Pick<Breadcrumb, 'category_id'>
-        )>>> }
-      )>>>, description?: Maybe<(
-        { __typename?: 'ComplexTextValue' }
-        & Pick<ComplexTextValue, 'html'>
-      )>, media_gallery_entries?: Maybe<Array<Maybe<(
-        { __typename?: 'MediaGalleryEntry' }
-        & Pick<MediaGalleryEntry, 'id' | 'label' | 'position' | 'disabled' | 'file'>
-      )>>>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'currency' | 'value'>
-          )> }
-        )> }
-      )>, small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )> }
-    )>>> }
-  )> }
-);
+export type ProductDetailQuery = { __typename?: 'Query' } & {
+  productDetail?: Maybe<
+    { __typename?: 'Products' } & {
+      items?: Maybe<
+        Array<
+          Maybe<
+            | ({ __typename: 'VirtualProduct' } & Pick<
+                VirtualProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+            | ({ __typename: 'SimpleProduct' } & Pick<
+                SimpleProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+            | ({ __typename: 'DownloadableProduct' } & Pick<
+                DownloadableProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+            | ({ __typename: 'GiftCardProduct' } & Pick<
+                GiftCardProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+            | ({ __typename: 'BundleProduct' } & Pick<
+                BundleProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+            | ({ __typename: 'GroupedProduct' } & Pick<
+                GroupedProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+            | ({ __typename: 'ConfigurableProduct' } & Pick<
+                ConfigurableProduct,
+                | 'id'
+                | 'meta_title'
+                | 'meta_keyword'
+                | 'meta_description'
+                | 'name'
+                | 'sku'
+                | 'url_key'
+              > & {
+                  configurable_options?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'ConfigurableProductOptions' } & Pick<
+                          ConfigurableProductOptions,
+                          'attribute_code' | 'attribute_id' | 'id' | 'label'
+                        > & {
+                            values?: Maybe<
+                              Array<
+                                Maybe<
+                                  {
+                                    __typename?: 'ConfigurableProductOptionsValues';
+                                  } & Pick<
+                                    ConfigurableProductOptionsValues,
+                                    | 'default_label'
+                                    | 'label'
+                                    | 'store_label'
+                                    | 'use_default_value'
+                                    | 'value_index'
+                                  > & {
+                                      swatch_data?: Maybe<
+                                        | ({
+                                            __typename?: 'ImageSwatchData';
+                                          } & Pick<
+                                            ImageSwatchData,
+                                            'thumbnail' | 'value'
+                                          >)
+                                        | ({
+                                            __typename?: 'TextSwatchData';
+                                          } & Pick<TextSwatchData, 'value'>)
+                                        | ({
+                                            __typename?: 'ColorSwatchData';
+                                          } & Pick<ColorSwatchData, 'value'>)
+                                      >;
+                                    }
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  variants?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'ConfigurableVariant' } & {
+                          attributes?: Maybe<
+                            Array<
+                              Maybe<
+                                {
+                                  __typename?: 'ConfigurableAttributeOption';
+                                } & Pick<
+                                  ConfigurableAttributeOption,
+                                  'code' | 'value_index'
+                                >
+                              >
+                            >
+                          >;
+                          product?: Maybe<
+                            { __typename?: 'SimpleProduct' } & Pick<
+                              SimpleProduct,
+                              'id' | 'sku' | 'stock_status'
+                            > & {
+                                media_gallery_entries?: Maybe<
+                                  Array<
+                                    Maybe<
+                                      {
+                                        __typename?: 'MediaGalleryEntry';
+                                      } & Pick<
+                                        MediaGalleryEntry,
+                                        | 'id'
+                                        | 'disabled'
+                                        | 'file'
+                                        | 'label'
+                                        | 'position'
+                                      >
+                                    >
+                                  >
+                                >;
+                                price?: Maybe<
+                                  { __typename?: 'ProductPrices' } & {
+                                    regularPrice?: Maybe<
+                                      { __typename?: 'Price' } & {
+                                        amount?: Maybe<
+                                          { __typename?: 'Money' } & Pick<
+                                            Money,
+                                            'currency' | 'value'
+                                          >
+                                        >;
+                                      }
+                                    >;
+                                  }
+                                >;
+                              }
+                          >;
+                        }
+                      >
+                    >
+                  >;
+                  categories?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'CategoryTree' } & Pick<
+                          CategoryTree,
+                          'id'
+                        > & {
+                            breadcrumbs?: Maybe<
+                              Array<
+                                Maybe<
+                                  { __typename?: 'Breadcrumb' } & Pick<
+                                    Breadcrumb,
+                                    'category_id'
+                                  >
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  description?: Maybe<
+                    { __typename?: 'ComplexTextValue' } & Pick<
+                      ComplexTextValue,
+                      'html'
+                    >
+                  >;
+                  media_gallery_entries?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'MediaGalleryEntry' } & Pick<
+                          MediaGalleryEntry,
+                          'id' | 'label' | 'position' | 'disabled' | 'file'
+                        >
+                      >
+                    >
+                  >;
+                  price?: Maybe<
+                    { __typename?: 'ProductPrices' } & {
+                      regularPrice?: Maybe<
+                        { __typename?: 'Price' } & {
+                          amount?: Maybe<
+                            { __typename?: 'Money' } & Pick<
+                              Money,
+                              'currency' | 'value'
+                            >
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  small_image?: Maybe<
+                    { __typename?: 'ProductImage' } & Pick<ProductImage, 'url'>
+                  >;
+                })
+          >
+        >
+      >;
+    }
+  >;
+};
 
 export type ProductDetailBySkuQueryVariables = Exact<{
   sku?: Maybe<Scalars['String']>;
 }>;
 
-
-export type ProductDetailBySkuQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'Products' }
-    & { items?: Maybe<Array<Maybe<(
-      { __typename: 'VirtualProduct' }
-      & Pick<VirtualProduct, 'id' | 'name' | 'sku' | 'url_key'>
-    ) | (
-      { __typename: 'SimpleProduct' }
-      & Pick<SimpleProduct, 'id' | 'name' | 'sku' | 'url_key'>
-    ) | (
-      { __typename: 'DownloadableProduct' }
-      & Pick<DownloadableProduct, 'id' | 'name' | 'sku' | 'url_key'>
-    ) | (
-      { __typename: 'GiftCardProduct' }
-      & Pick<GiftCardProduct, 'id' | 'name' | 'sku' | 'url_key'>
-    ) | (
-      { __typename: 'BundleProduct' }
-      & Pick<BundleProduct, 'id' | 'name' | 'sku' | 'url_key'>
-    ) | (
-      { __typename: 'GroupedProduct' }
-      & Pick<GroupedProduct, 'id' | 'name' | 'sku' | 'url_key'>
-    ) | (
-      { __typename: 'ConfigurableProduct' }
-      & Pick<ConfigurableProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { configurable_options?: Maybe<Array<Maybe<(
-        { __typename?: 'ConfigurableProductOptions' }
-        & Pick<ConfigurableProductOptions, 'attribute_code' | 'attribute_id' | 'id' | 'label'>
-        & { values?: Maybe<Array<Maybe<(
-          { __typename?: 'ConfigurableProductOptionsValues' }
-          & Pick<ConfigurableProductOptionsValues, 'default_label' | 'label' | 'store_label' | 'use_default_value' | 'value_index'>
-          & { swatch_data?: Maybe<(
-            { __typename?: 'ImageSwatchData' }
-            & Pick<ImageSwatchData, 'thumbnail' | 'value'>
-          ) | (
-            { __typename?: 'TextSwatchData' }
-            & Pick<TextSwatchData, 'value'>
-          ) | (
-            { __typename?: 'ColorSwatchData' }
-            & Pick<ColorSwatchData, 'value'>
-          )> }
-        )>>> }
-      )>>>, variants?: Maybe<Array<Maybe<(
-        { __typename?: 'ConfigurableVariant' }
-        & { attributes?: Maybe<Array<Maybe<(
-          { __typename?: 'ConfigurableAttributeOption' }
-          & Pick<ConfigurableAttributeOption, 'code' | 'value_index'>
-        )>>>, product?: Maybe<(
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'sku' | 'stock_status'>
-          & { media_gallery_entries?: Maybe<Array<Maybe<(
-            { __typename?: 'MediaGalleryEntry' }
-            & Pick<MediaGalleryEntry, 'id' | 'disabled' | 'file' | 'label' | 'position'>
-          )>>> }
-        )> }
-      )>>> }
-    )>>> }
-  )> }
-);
+export type ProductDetailBySkuQuery = { __typename?: 'Query' } & {
+  products?: Maybe<
+    { __typename?: 'Products' } & {
+      items?: Maybe<
+        Array<
+          Maybe<
+            | ({ __typename: 'VirtualProduct' } & Pick<
+                VirtualProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              >)
+            | ({ __typename: 'SimpleProduct' } & Pick<
+                SimpleProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              >)
+            | ({ __typename: 'DownloadableProduct' } & Pick<
+                DownloadableProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              >)
+            | ({ __typename: 'GiftCardProduct' } & Pick<
+                GiftCardProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              >)
+            | ({ __typename: 'BundleProduct' } & Pick<
+                BundleProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              >)
+            | ({ __typename: 'GroupedProduct' } & Pick<
+                GroupedProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              >)
+            | ({ __typename: 'ConfigurableProduct' } & Pick<
+                ConfigurableProduct,
+                'id' | 'name' | 'sku' | 'url_key'
+              > & {
+                  configurable_options?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'ConfigurableProductOptions' } & Pick<
+                          ConfigurableProductOptions,
+                          'attribute_code' | 'attribute_id' | 'id' | 'label'
+                        > & {
+                            values?: Maybe<
+                              Array<
+                                Maybe<
+                                  {
+                                    __typename?: 'ConfigurableProductOptionsValues';
+                                  } & Pick<
+                                    ConfigurableProductOptionsValues,
+                                    | 'default_label'
+                                    | 'label'
+                                    | 'store_label'
+                                    | 'use_default_value'
+                                    | 'value_index'
+                                  > & {
+                                      swatch_data?: Maybe<
+                                        | ({
+                                            __typename?: 'ImageSwatchData';
+                                          } & Pick<
+                                            ImageSwatchData,
+                                            'thumbnail' | 'value'
+                                          >)
+                                        | ({
+                                            __typename?: 'TextSwatchData';
+                                          } & Pick<TextSwatchData, 'value'>)
+                                        | ({
+                                            __typename?: 'ColorSwatchData';
+                                          } & Pick<ColorSwatchData, 'value'>)
+                                      >;
+                                    }
+                                >
+                              >
+                            >;
+                          }
+                      >
+                    >
+                  >;
+                  variants?: Maybe<
+                    Array<
+                      Maybe<
+                        { __typename?: 'ConfigurableVariant' } & {
+                          attributes?: Maybe<
+                            Array<
+                              Maybe<
+                                {
+                                  __typename?: 'ConfigurableAttributeOption';
+                                } & Pick<
+                                  ConfigurableAttributeOption,
+                                  'code' | 'value_index'
+                                >
+                              >
+                            >
+                          >;
+                          product?: Maybe<
+                            { __typename?: 'SimpleProduct' } & Pick<
+                              SimpleProduct,
+                              'id' | 'sku' | 'stock_status'
+                            > & {
+                                media_gallery_entries?: Maybe<
+                                  Array<
+                                    Maybe<
+                                      {
+                                        __typename?: 'MediaGalleryEntry';
+                                      } & Pick<
+                                        MediaGalleryEntry,
+                                        | 'id'
+                                        | 'disabled'
+                                        | 'file'
+                                        | 'label'
+                                        | 'position'
+                                      >
+                                    >
+                                  >
+                                >;
+                              }
+                          >;
+                        }
+                      >
+                    >
+                  >;
+                })
+          >
+        >
+      >;
+    }
+  >;
+};
 
 export type GetProductFiltersByCategoryQueryVariables = Exact<{
   categoryIdFilter: FilterEqualTypeInput;
 }>;
 
-
-export type GetProductFiltersByCategoryQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'Products' }
-    & { aggregations?: Maybe<Array<Maybe<(
-      { __typename?: 'Aggregation' }
-      & Pick<Aggregation, 'label' | 'count' | 'attribute_code'>
-      & { options?: Maybe<Array<Maybe<(
-        { __typename?: 'AggregationOption' }
-        & Pick<AggregationOption, 'label' | 'value'>
-      )>>> }
-    )>>> }
-  )> }
-);
+export type GetProductFiltersByCategoryQuery = { __typename?: 'Query' } & {
+  products?: Maybe<
+    { __typename?: 'Products' } & {
+      aggregations?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'Aggregation' } & Pick<
+              Aggregation,
+              'label' | 'count' | 'attribute_code'
+            > & {
+                options?: Maybe<
+                  Array<
+                    Maybe<
+                      { __typename?: 'AggregationOption' } & Pick<
+                        AggregationOption,
+                        'label' | 'value'
+                      >
+                    >
+                  >
+                >;
+              }
+          >
+        >
+      >;
+    }
+  >;
+};
 
 export type GetProductFiltersBySearchQueryVariables = Exact<{
   search: Scalars['String'];
 }>;
 
-
-export type GetProductFiltersBySearchQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'Products' }
-    & { aggregations?: Maybe<Array<Maybe<(
-      { __typename?: 'Aggregation' }
-      & Pick<Aggregation, 'label' | 'count' | 'attribute_code'>
-      & { options?: Maybe<Array<Maybe<(
-        { __typename?: 'AggregationOption' }
-        & Pick<AggregationOption, 'label' | 'value'>
-      )>>> }
-    )>>> }
-  )> }
-);
+export type GetProductFiltersBySearchQuery = { __typename?: 'Query' } & {
+  products?: Maybe<
+    { __typename?: 'Products' } & {
+      aggregations?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'Aggregation' } & Pick<
+              Aggregation,
+              'label' | 'count' | 'attribute_code'
+            > & {
+                options?: Maybe<
+                  Array<
+                    Maybe<
+                      { __typename?: 'AggregationOption' } & Pick<
+                        AggregationOption,
+                        'label' | 'value'
+                      >
+                    >
+                  >
+                >;
+              }
+          >
+        >
+      >;
+    }
+  >;
+};
 
 export type GetProductsBySkuQueryVariables = Exact<{
   skus?: Maybe<Array<Maybe<Scalars['String']>>>;
   pageSize: Scalars['Int'];
 }>;
 
+export type GetProductsBySkuQuery = { __typename?: 'Query' } & {
+  products?: Maybe<
+    { __typename?: 'Products' } & Pick<Products, 'total_count'> & {
+        items?: Maybe<
+          Array<
+            Maybe<
+              | ({ __typename?: 'VirtualProduct' } & Pick<
+                  VirtualProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'SimpleProduct' } & Pick<
+                  SimpleProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'DownloadableProduct' } & Pick<
+                  DownloadableProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'GiftCardProduct' } & Pick<
+                  GiftCardProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'BundleProduct' } & Pick<
+                  BundleProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'GroupedProduct' } & Pick<
+                  GroupedProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                  ConfigurableProduct,
+                  'id' | 'name' | 'sku' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+            >
+          >
+        >;
+        filters?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'LayerFilter' } & Pick<
+                LayerFilter,
+                'name' | 'filter_items_count' | 'request_var'
+              > & {
+                  filter_items?: Maybe<
+                    Array<
+                      Maybe<
+                        | ({ __typename?: 'LayerFilterItem' } & Pick<
+                            LayerFilterItem,
+                            'label' | 'value_string'
+                          >)
+                        | ({ __typename?: 'SwatchLayerFilterItem' } & Pick<
+                            SwatchLayerFilterItem,
+                            'label' | 'value_string'
+                          >)
+                      >
+                    >
+                  >;
+                }
+            >
+          >
+        >;
+      }
+  >;
+};
 
-export type GetProductsBySkuQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'Products' }
-    & Pick<Products, 'total_count'>
-    & { items?: Maybe<Array<Maybe<(
-      { __typename?: 'VirtualProduct' }
-      & Pick<VirtualProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'SimpleProduct' }
-      & Pick<SimpleProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'DownloadableProduct' }
-      & Pick<DownloadableProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'GiftCardProduct' }
-      & Pick<GiftCardProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'BundleProduct' }
-      & Pick<BundleProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'GroupedProduct' }
-      & Pick<GroupedProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'ConfigurableProduct' }
-      & Pick<ConfigurableProduct, 'id' | 'name' | 'sku' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    )>>>, filters?: Maybe<Array<Maybe<(
-      { __typename?: 'LayerFilter' }
-      & Pick<LayerFilter, 'name' | 'filter_items_count' | 'request_var'>
-      & { filter_items?: Maybe<Array<Maybe<(
-        { __typename?: 'LayerFilterItem' }
-        & Pick<LayerFilterItem, 'label' | 'value_string'>
-      ) | (
-        { __typename?: 'SwatchLayerFilterItem' }
-        & Pick<SwatchLayerFilterItem, 'label' | 'value_string'>
-      )>>> }
-    )>>> }
-  )> }
-);
+export type StoreConfigDataQueryVariables = Exact<{ [key: string]: never }>;
 
-export type StoreConfigDataQueryVariables = Exact<{ [key: string]: never; }>;
+export type StoreConfigDataQuery = { __typename?: 'Query' } & {
+  storeConfig?: Maybe<
+    { __typename?: 'StoreConfig' } & Pick<StoreConfig, 'id' | 'copyright'>
+  >;
+};
 
+export type GetFilterInputsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type StoreConfigDataQuery = (
-  { __typename?: 'Query' }
-  & { storeConfig?: Maybe<(
-    { __typename?: 'StoreConfig' }
-    & Pick<StoreConfig, 'id' | 'copyright'>
-  )> }
-);
-
-export type GetFilterInputsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetFilterInputsQuery = (
-  { __typename?: 'Query' }
-  & { __type?: Maybe<(
-    { __typename?: '__Type' }
-    & { inputFields?: Maybe<Array<(
-      { __typename?: '__InputValue' }
-      & Pick<__InputValue, 'name'>
-      & { type: (
-        { __typename?: '__Type' }
-        & Pick<__Type, 'name'>
-      ) }
-    )>> }
-  )> }
-);
+export type GetFilterInputsQuery = { __typename?: 'Query' } & {
+  __type?: Maybe<
+    { __typename?: '__Type' } & {
+      inputFields?: Maybe<
+        Array<
+          { __typename?: '__InputValue' } & Pick<__InputValue, 'name'> & {
+              type: { __typename?: '__Type' } & Pick<__Type, 'name'>;
+            }
+        >
+      >;
+    }
+  >;
+};
 
 export type ProductSearchQueryVariables = Exact<{
   currentPage?: Maybe<Scalars['Int']>;
@@ -6991,290 +8345,402 @@ export type ProductSearchQueryVariables = Exact<{
   sort?: Maybe<ProductAttributeSortInput>;
 }>;
 
-
-export type ProductSearchQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'Products' }
-    & Pick<Products, 'total_count'>
-    & { items?: Maybe<Array<Maybe<(
-      { __typename?: 'VirtualProduct' }
-      & Pick<VirtualProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'SimpleProduct' }
-      & Pick<SimpleProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'DownloadableProduct' }
-      & Pick<DownloadableProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'GiftCardProduct' }
-      & Pick<GiftCardProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'BundleProduct' }
-      & Pick<BundleProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'GroupedProduct' }
-      & Pick<GroupedProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    ) | (
-      { __typename?: 'ConfigurableProduct' }
-      & Pick<ConfigurableProduct, 'id' | 'name' | 'url_key'>
-      & { small_image?: Maybe<(
-        { __typename?: 'ProductImage' }
-        & Pick<ProductImage, 'url'>
-      )>, price?: Maybe<(
-        { __typename?: 'ProductPrices' }
-        & { regularPrice?: Maybe<(
-          { __typename?: 'Price' }
-          & { amount?: Maybe<(
-            { __typename?: 'Money' }
-            & Pick<Money, 'value' | 'currency'>
-          )> }
-        )> }
-      )> }
-    )>>>, page_info?: Maybe<(
-      { __typename?: 'SearchResultPageInfo' }
-      & Pick<SearchResultPageInfo, 'total_pages'>
-    )> }
-  )> }
-);
+export type ProductSearchQuery = { __typename?: 'Query' } & {
+  products?: Maybe<
+    { __typename?: 'Products' } & Pick<Products, 'total_count'> & {
+        items?: Maybe<
+          Array<
+            Maybe<
+              | ({ __typename?: 'VirtualProduct' } & Pick<
+                  VirtualProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'SimpleProduct' } & Pick<
+                  SimpleProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'DownloadableProduct' } & Pick<
+                  DownloadableProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'GiftCardProduct' } & Pick<
+                  GiftCardProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'BundleProduct' } & Pick<
+                  BundleProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'GroupedProduct' } & Pick<
+                  GroupedProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+              | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                  ConfigurableProduct,
+                  'id' | 'name' | 'url_key'
+                > & {
+                    small_image?: Maybe<
+                      { __typename?: 'ProductImage' } & Pick<
+                        ProductImage,
+                        'url'
+                      >
+                    >;
+                    price?: Maybe<
+                      { __typename?: 'ProductPrices' } & {
+                        regularPrice?: Maybe<
+                          { __typename?: 'Price' } & {
+                            amount?: Maybe<
+                              { __typename?: 'Money' } & Pick<
+                                Money,
+                                'value' | 'currency'
+                              >
+                            >;
+                          }
+                        >;
+                      }
+                    >;
+                  })
+            >
+          >
+        >;
+        page_info?: Maybe<
+          { __typename?: 'SearchResultPageInfo' } & Pick<
+            SearchResultPageInfo,
+            'total_pages'
+          >
+        >;
+      }
+  >;
+};
 
 export type RemoveItemMutationVariables = Exact<{
   cartId: Scalars['String'];
   itemId: Scalars['Int'];
 }>;
 
-
-export type RemoveItemMutation = (
-  { __typename?: 'Mutation' }
-  & { removeItemFromCart?: Maybe<(
-    { __typename?: 'RemoveItemFromCartOutput' }
-    & { cart: (
-      { __typename?: 'Cart' }
-      & Pick<Cart, 'id'>
-      & { items?: Maybe<Array<Maybe<(
-        { __typename?: 'SimpleCartItem' }
-        & Pick<SimpleCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'VirtualCartItem' }
-        & Pick<VirtualCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'DownloadableCartItem' }
-        & Pick<DownloadableCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'BundleCartItem' }
-        & Pick<BundleCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'ConfigurableCartItem' }
-        & Pick<ConfigurableCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      )>>> }
-    ) }
-  )> }
-);
+export type RemoveItemMutation = { __typename?: 'Mutation' } & {
+  removeItemFromCart?: Maybe<
+    { __typename?: 'RemoveItemFromCartOutput' } & {
+      cart: { __typename?: 'Cart' } & Pick<Cart, 'id'> & {
+          items?: Maybe<
+            Array<
+              Maybe<
+                | ({ __typename?: 'SimpleCartItem' } & Pick<
+                    SimpleCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'VirtualCartItem' } & Pick<
+                    VirtualCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'DownloadableCartItem' } & Pick<
+                    DownloadableCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'BundleCartItem' } & Pick<
+                    BundleCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'ConfigurableCartItem' } & Pick<
+                    ConfigurableCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+              >
+            >
+          >;
+        };
+    }
+  >;
+};
 
 export type SetGuestEmailOnCartMutationVariables = Exact<{
   cartId: Scalars['String'];
   email: Scalars['String'];
 }>;
 
-
-export type SetGuestEmailOnCartMutation = (
-  { __typename?: 'Mutation' }
-  & { setGuestEmailOnCart?: Maybe<(
-    { __typename?: 'SetGuestEmailOnCartOutput' }
-    & { cart: (
-      { __typename?: 'Cart' }
-      & Pick<Cart, 'id'>
-    ) }
-  )> }
-);
+export type SetGuestEmailOnCartMutation = { __typename?: 'Mutation' } & {
+  setGuestEmailOnCart?: Maybe<
+    { __typename?: 'SetGuestEmailOnCartOutput' } & {
+      cart: { __typename?: 'Cart' } & Pick<Cart, 'id'>;
+    }
+  >;
+};
 
 export type SetShippingAddressMutationVariables = Exact<{
   cartId: Scalars['String'];
@@ -7288,49 +8754,55 @@ export type SetShippingAddressMutationVariables = Exact<{
   telephone: Scalars['String'];
 }>;
 
-
-export type SetShippingAddressMutation = (
-  { __typename?: 'Mutation' }
-  & { setShippingAddressesOnCart?: Maybe<(
-    { __typename?: 'SetShippingAddressesOnCartOutput' }
-    & { cart: (
-      { __typename?: 'Cart' }
-      & Pick<Cart, 'id'>
-      & { shipping_addresses: Array<Maybe<(
-        { __typename?: 'ShippingCartAddress' }
-        & { available_shipping_methods?: Maybe<Array<Maybe<(
-          { __typename?: 'AvailableShippingMethod' }
-          & Pick<AvailableShippingMethod, 'carrier_code' | 'carrier_title' | 'method_code' | 'method_title'>
-        )>>> }
-      )>> }
-    ) }
-  )> }
-);
+export type SetShippingAddressMutation = { __typename?: 'Mutation' } & {
+  setShippingAddressesOnCart?: Maybe<
+    { __typename?: 'SetShippingAddressesOnCartOutput' } & {
+      cart: { __typename?: 'Cart' } & Pick<Cart, 'id'> & {
+          shipping_addresses: Array<
+            Maybe<
+              { __typename?: 'ShippingCartAddress' } & {
+                available_shipping_methods?: Maybe<
+                  Array<
+                    Maybe<
+                      { __typename?: 'AvailableShippingMethod' } & Pick<
+                        AvailableShippingMethod,
+                        | 'carrier_code'
+                        | 'carrier_title'
+                        | 'method_code'
+                        | 'method_title'
+                      >
+                    >
+                  >
+                >;
+              }
+            >
+          >;
+        };
+    }
+  >;
+};
 
 export type SignInMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
+export type SignInMutation = { __typename?: 'Mutation' } & {
+  generateCustomerToken?: Maybe<
+    { __typename?: 'CustomerToken' } & Pick<CustomerToken, 'token'>
+  >;
+};
 
-export type SignInMutation = (
-  { __typename?: 'Mutation' }
-  & { generateCustomerToken?: Maybe<(
-    { __typename?: 'CustomerToken' }
-    & Pick<CustomerToken, 'token'>
-  )> }
-);
+export type SignOutMutationVariables = Exact<{ [key: string]: never }>;
 
-export type SignOutMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SignOutMutation = (
-  { __typename?: 'Mutation' }
-  & { revokeCustomerToken?: Maybe<(
-    { __typename?: 'RevokeCustomerTokenOutput' }
-    & Pick<RevokeCustomerTokenOutput, 'result'>
-  )> }
-);
+export type SignOutMutation = { __typename?: 'Mutation' } & {
+  revokeCustomerToken?: Maybe<
+    { __typename?: 'RevokeCustomerTokenOutput' } & Pick<
+      RevokeCustomerTokenOutput,
+      'result'
+    >
+  >;
+};
 
 export type UpdateItemInCartMutationVariables = Exact<{
   cartId: Scalars['String'];
@@ -7338,155 +8810,199 @@ export type UpdateItemInCartMutationVariables = Exact<{
   quantity: Scalars['Float'];
 }>;
 
-
-export type UpdateItemInCartMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCartItems?: Maybe<(
-    { __typename?: 'UpdateCartItemsOutput' }
-    & { cart: (
-      { __typename?: 'Cart' }
-      & Pick<Cart, 'id'>
-      & { items?: Maybe<Array<Maybe<(
-        { __typename?: 'SimpleCartItem' }
-        & Pick<SimpleCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'VirtualCartItem' }
-        & Pick<VirtualCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'DownloadableCartItem' }
-        & Pick<DownloadableCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'BundleCartItem' }
-        & Pick<BundleCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      ) | (
-        { __typename?: 'ConfigurableCartItem' }
-        & Pick<ConfigurableCartItem, 'id' | 'quantity'>
-        & { product: (
-          { __typename?: 'VirtualProduct' }
-          & Pick<VirtualProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'SimpleProduct' }
-          & Pick<SimpleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'DownloadableProduct' }
-          & Pick<DownloadableProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GiftCardProduct' }
-          & Pick<GiftCardProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'BundleProduct' }
-          & Pick<BundleProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'GroupedProduct' }
-          & Pick<GroupedProduct, 'id' | 'name'>
-        ) | (
-          { __typename?: 'ConfigurableProduct' }
-          & Pick<ConfigurableProduct, 'id' | 'name'>
-        ) }
-      )>>> }
-    ) }
-  )> }
-);
+export type UpdateItemInCartMutation = { __typename?: 'Mutation' } & {
+  updateCartItems?: Maybe<
+    { __typename?: 'UpdateCartItemsOutput' } & {
+      cart: { __typename?: 'Cart' } & Pick<Cart, 'id'> & {
+          items?: Maybe<
+            Array<
+              Maybe<
+                | ({ __typename?: 'SimpleCartItem' } & Pick<
+                    SimpleCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'VirtualCartItem' } & Pick<
+                    VirtualCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'DownloadableCartItem' } & Pick<
+                    DownloadableCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'BundleCartItem' } & Pick<
+                    BundleCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+                | ({ __typename?: 'ConfigurableCartItem' } & Pick<
+                    ConfigurableCartItem,
+                    'id' | 'quantity'
+                  > & {
+                      product:
+                        | ({ __typename?: 'VirtualProduct' } & Pick<
+                            VirtualProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'SimpleProduct' } & Pick<
+                            SimpleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'DownloadableProduct' } & Pick<
+                            DownloadableProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GiftCardProduct' } & Pick<
+                            GiftCardProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'BundleProduct' } & Pick<
+                            BundleProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'GroupedProduct' } & Pick<
+                            GroupedProduct,
+                            'id' | 'name'
+                          >)
+                        | ({ __typename?: 'ConfigurableProduct' } & Pick<
+                            ConfigurableProduct,
+                            'id' | 'name'
+                          >);
+                    })
+              >
+            >
+          >;
+        };
+    }
+  >;
+};
 
 export type ResolveUrlQueryVariables = Exact<{
   urlKey: Scalars['String'];
 }>;
 
-
-export type ResolveUrlQuery = (
-  { __typename?: 'Query' }
-  & { urlResolver?: Maybe<(
-    { __typename?: 'EntityUrl' }
-    & Pick<EntityUrl, 'type' | 'id'>
-  )> }
-);
+export type ResolveUrlQuery = { __typename?: 'Query' } & {
+  urlResolver?: Maybe<
+    { __typename?: 'EntityUrl' } & Pick<EntityUrl, 'type' | 'id'>
+  >;
+};
 
 /** AUTO GENERATED, DO NOT EDIT THIS FILE */

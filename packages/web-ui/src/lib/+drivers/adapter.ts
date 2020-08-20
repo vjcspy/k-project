@@ -9,14 +9,12 @@ export const withAdapter = (
   webUiAdapterOptions: WebUiAdapterOptions = {
     ssr: true,
     apollo: {
-      apiBase: process.env.NEXT_PUBLIC_APOLLO_API!
-    }
+      apiBase: process.env.NEXT_PUBLIC_APOLLO_API!,
+    },
   }
 ): NextPage<WebUiPageDefaultProps> => {
   return withUi(
-    withApollo(
-      withStore(PageComponent),
-      webUiAdapterOptions
-    ),
-    webUiAdapterOptions);
+    withApollo(withStore(PageComponent), webUiAdapterOptions),
+    webUiAdapterOptions
+  );
 };

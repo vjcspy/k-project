@@ -9,7 +9,7 @@ console.log('load driver store');
 const store = configureStore({
   reducer: reducerManager.reduce,
   middleware,
-  devTools: true
+  devTools: true,
 });
 
 // Optional: Put the reducer manager on the store so it is easily accessible
@@ -17,7 +17,7 @@ const store = configureStore({
 store.reducerManager = reducerManager;
 
 export const withStore = (Page: NextPage) => {
-  const WithStore: NextPage = props => {
+  const WithStore: NextPage = (props) => {
     return (
       <ReduxProvider store={store}>
         <Page {...props} />
@@ -26,7 +26,7 @@ export const withStore = (Page: NextPage) => {
   };
 
   if (typeof Page.getInitialProps === 'function') {
-    WithStore.getInitialProps = async context => {
+    WithStore.getInitialProps = async (context) => {
       // @ts-ignore
       const props = await Page.getInitialProps(context);
 

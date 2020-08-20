@@ -4,13 +4,13 @@ import { withUiComponent } from '@vjcspy/web-ui';
 import { useAppCount } from '@vjcspy/web-ui/build/main/lib/ui/hook';
 
 console.log('load bed component');
-const Bed: FunctionComponent<{}> = props => {
+const Bed: FunctionComponent<{}> = (props) => {
   console.log('re-render bed component');
   const { data, loading } = useCategoryListQuery({
     variables: {
-      id: 2
+      id: 2,
     },
-    ssr: true
+    ssr: true,
   });
 
   const { appCount, actionIncrease, actionDecrease } = useAppCount();

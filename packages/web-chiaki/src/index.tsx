@@ -13,20 +13,20 @@ WebUiComponentTree.registerComponent([
     uiId: 'chiaki_bar_page',
     uiTags: ['BAR_PAGE'],
     component: BarPage,
-    priorityFn: () => 1
+    priorityFn: () => 1,
   },
   {
     uiId: 'chiaki_category_list',
     uiTags: ['bar_child1'],
     component: dynamic(() => import('./lib/++components/bed')),
-    priorityFn: () => 1
+    priorityFn: () => 1,
   },
   {
     uiId: 'chiaki_test',
     uiTags: ['bar_child3'],
     component: dynamic(() => import('./lib/++components/test')),
-    priorityFn: () => 101
-  }
+    priorityFn: () => 101,
+  },
 ]);
 
 /**
@@ -37,7 +37,7 @@ WebUiComponentTree.registerComponent([
  */
 const withChiakiUi = (Page: NextPage): NextPage<any> => {
   // TODO: Create a context, wrapper ....
-  const WithChiakiUI: React.FC = props => {
+  const WithChiakiUI: React.FC = (props) => {
     return <Page {...props} />;
   };
 

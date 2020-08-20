@@ -1,4 +1,7 @@
-import { useCategoryListQuery, useProductDetailBySkuQuery } from '../../graphql/generated/_generated-hooks';
+import {
+  useCategoryListQuery,
+  useProductDetailBySkuQuery,
+} from '../../graphql/generated/_generated-hooks';
 import * as React from 'react';
 
 // TODO: fix loi fragment khi load component nay
@@ -7,9 +10,9 @@ import * as React from 'react';
 export const ProductWebUi = () => {
   const { data, loading } = useProductDetailBySkuQuery({
     variables: {
-      sku: 'Bánh crepe phomai Đài Loan'
+      sku: 'Bánh crepe phomai Đài Loan',
     },
-    ssr: true
+    ssr: true,
   });
 
   return (

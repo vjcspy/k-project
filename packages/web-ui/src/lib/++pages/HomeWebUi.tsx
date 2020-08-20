@@ -4,9 +4,9 @@ import * as React from 'react';
 const HomeWebUi = (props: { id: number }) => {
   const { data, loading } = useCategoryListQuery({
     variables: {
-      id: 2
+      id: 2,
     },
-    ssr: true
+    ssr: true,
   });
 
   return (

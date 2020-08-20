@@ -9,6 +9,8 @@ console.log('loaded withUiComponent');
  * @param Component
  * @returns {(props) => JSX.Element}
  */
-export function withUiComponent<T>(Component: ComponentType<T>): UiComponent<T> {
-  return props => <Component {...props} />;
+export function withUiComponent<T>(
+  Component: ComponentType<T>
+): UiComponent<T> {
+  return (props) => <Component {...props} />;
 }

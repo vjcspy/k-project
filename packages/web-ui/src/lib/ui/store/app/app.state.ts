@@ -8,5 +8,5 @@ export const AppStateFactory: () => AppState = () => ({
   version: '1.0.0',
   error: null,
 
-  count: 99
+  count: 99,
 });

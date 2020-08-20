@@ -10,7 +10,7 @@ export const useChiakiContext = () => useContext(ChiakiContext);
 
 export const ChiakiContextProvider: React.FC<{
   chiakiContextValue: ChiakiContextValue;
-}> = props => {
+}> = (props) => {
   const store = useStore();
 
   // @ts-ignore

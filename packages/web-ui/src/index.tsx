@@ -24,14 +24,16 @@ WebUiComponentTree.registerComponent([
     uiId: 'ui_bar_page',
     uiTags: ['BAR_PAGE'],
     component: BarPage,
-    priorityFn: () => 101
+    priorityFn: () => 101,
   },
   {
     uiId: 'ui_bar_child1',
     uiTags: ['bar_child1'],
-    component: dynamic(() => import('./lib/++components/category-list/category-list')),
-    priorityFn: () => 101
-  }
+    component: dynamic(() =>
+      import('./lib/++components/category-list/category-list')
+    ),
+    priorityFn: () => 101,
+  },
 ]);
 
 /**
@@ -42,7 +44,7 @@ WebUiComponentTree.registerComponent([
  */
 const withUi = (Page: NextPage): NextPage<any> => {
   // TODO: Create a context, wrapper ....
-  const WithUi: React.FC = props => {
+  const WithUi: React.FC = (props) => {
     return <Page {...props} />;
   };
 

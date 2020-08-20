@@ -6,7 +6,7 @@ export * from './state.index';
 export * from './actions.index';
 
 const reducers: ReducersMapObject<any, any> = {
-  app: appReducer
+  app: appReducer,
 };
 
 function createReducerManager(initialReducers: ReducersMapObject<any, any>) {
@@ -28,7 +28,7 @@ function createReducerManager(initialReducers: ReducersMapObject<any, any>) {
       // If any reducers have been removed, clean up their state first
       if (keysToRemove.length > 0) {
         state = { ...state };
-        for (let key of keysToRemove) {
+        for (const key of keysToRemove) {
           delete state[key];
         }
         keysToRemove = [];
@@ -65,10 +65,9 @@ function createReducerManager(initialReducers: ReducersMapObject<any, any>) {
 
       // Generate a new combined reducer
       combinedReducer = combineReducers(reducers);
-    }
+    },
   };
 }
 
 export const reducerManager = createReducerManager(reducers);
 export const middleware = () => [];
-

@@ -56,7 +56,7 @@ export class BrowserPersistence {
       JSON.stringify({
         value: JSON.stringify(value),
         timeStored,
-        ttl
+        ttl,
       })
     );
   }

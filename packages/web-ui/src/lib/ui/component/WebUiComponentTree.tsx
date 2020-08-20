@@ -20,9 +20,12 @@ export class WebUiComponentTree {
 
   static WEB_UI_CONTEXT: UiContextValue;
 
-  private static _currentTheme: string = 'ui';
+  private static _currentTheme = 'ui';
 
-  static registerComponent(componentConfigs: WebUiComponentConfig | WebUiComponentConfig[], theme: string = 'ui') {
+  static registerComponent(
+    componentConfigs: WebUiComponentConfig | WebUiComponentConfig[],
+    theme = 'ui'
+  ) {
     if (typeof WebUiComponentTree.THEMES[theme] === 'undefined') {
       WebUiComponentTree.THEMES[theme] = List.of();
     }
@@ -32,22 +35,34 @@ export class WebUiComponentTree {
     }
 
     // @ts-ignore
-    WebUiComponentTree.THEMES[theme] = WebUiComponentTree.THEMES[theme].push(...componentConfigs);
+    WebUiComponentTree.THEMES[theme] = WebUiComponentTree.THEMES[theme].push(
+      ...componentConfigs
+    );
   }
 
-  static component(uiTag: string, defaultPage?: UiComponent<any>): UiComponent<any> {
+  static component(
+    uiTag: string,
+    defaultPage?: UiComponent<any>
+  ): UiComponent<any> {
     console.log('try to resolve component');
     if (WebUiComponentTree.COMPONENT_TREE.has(uiTag)) {
       return WebUiComponentTree.COMPONENT_TREE.get(uiTag);
     }
 
     // TODO: add more logic to handle override page
-    if (typeof WebUiComponentTree.THEMES[WebUiComponentTree._currentTheme] !== 'undefined') {
-      const isReplaced: WebUiComponentConfig = WebUiComponentTree.THEMES[WebUiComponentTree._currentTheme]
-        .filter(value => _.includes(value.uiTags, uiTag))
+    if (
+      typeof WebUiComponentTree.THEMES[WebUiComponentTree._currentTheme] !==
+      'undefined'
+    ) {
+      const isReplaced: WebUiComponentConfig = WebUiComponentTree.THEMES[
+        WebUiComponentTree._currentTheme
+      ]
+        .filter((value) => _.includes(value.uiTags, uiTag))
         .sort((valueA, valueB) => {
-          let a = typeof valueA.priorityFn == 'function' ? valueA.priorityFn() : 0;
-          let b = typeof valueB.priorityFn == 'function' ? valueB.priorityFn() : 0;
+          const a =
+            typeof valueA.priorityFn == 'function' ? valueA.priorityFn() : 0;
+          const b =
+            typeof valueB.priorityFn == 'function' ? valueB.priorityFn() : 0;
 
           if (a < b) {
             return -1;
@@ -64,7 +79,10 @@ export class WebUiComponentTree {
         .first();
 
       if (isReplaced) {
-        WebUiComponentTree.COMPONENT_TREE = WebUiComponentTree.COMPONENT_TREE.set(uiTag, isReplaced.component);
+        WebUiComponentTree.COMPONENT_TREE = WebUiComponentTree.COMPONENT_TREE.set(
+          uiTag,
+          isReplaced.component
+        );
         return isReplaced.component;
       }
     }

@@ -8,9 +8,16 @@ import { WebUiComponentTree } from './WebUiComponentTree';
  * @returns {JSX.Element}
  * @constructor
  */
-export const Extension: FunctionComponent<{ uitag?: string; defaultComponent?: any; uiTag?: string }> = props => {
+export const Extension: FunctionComponent<{
+  uitag?: string;
+  defaultComponent?: any;
+  uiTag?: string;
+}> = (props) => {
   // @ts-ignore
-  const Component = WebUiComponentTree.component(props.uitag ?? props.uiTag, props.defaultComponent);
+  const Component = WebUiComponentTree.component(
+    props.uitag ?? props.uiTag,
+    props.defaultComponent
+  );
 
   return <Component />;
 };

@@ -1,6 +1,6 @@
 import {
   createAction as createActionOrigin,
-  PayloadActionCreator
+  PayloadActionCreator,
 } from '@reduxjs/toolkit';
 
 export function createAction<P, T extends string = string>(

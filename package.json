@@ -11,6 +11,7 @@
     "start": "yarn --cwd packages/web start",
     "web": "yarn workspace @vjcspy/web",
     "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
+    "prettier": "prettier '*/**/*.{ts,tsx}' --write",
     "/API": "_______________________________API_______________________________",
     "api": "yarn workspace @vjcspy/api",
     "a": "yarn api start:dev",

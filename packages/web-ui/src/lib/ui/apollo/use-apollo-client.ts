@@ -2,7 +2,10 @@ import { ApolloClient } from '@apollo/client';
 import { cacheKeyFromType } from '@magento/venia-ui/lib/util/apolloCache';
 import { DefaultLink } from '@vjcspy/chitility';
 import { ApolloCache } from 'apollo-cache';
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import {
+  InMemoryCache,
+  IntrospectionFragmentMatcher,
+} from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { useEffect, useState } from 'react';
 import { WebUiApolloOptions } from '../../types';
@@ -26,7 +29,7 @@ const preInstantiatedCache = new InMemoryCache({
   fragmentMatcher: new IntrospectionFragmentMatcher({
     // TODO: need to fix
     // introspectionQueryResultData: UNION_AND_INTERFACE_TYPES
-  })
+  }),
 });
 
 let apolloClient: any;
@@ -37,7 +40,9 @@ let apolloClient: any;
  * @param apolloOptions
  * @returns {ApolloClient<any>}
  */
-export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClient<any> => {
+export const initApolloClient = (
+  apolloOptions: WebUiApolloOptions
+): ApolloClient<any> => {
   if (apolloOptions.client) {
     return apolloOptions.client;
   }
@@ -59,7 +64,7 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
   apolloClient = new ApolloClient({
     ssrMode: isSSR(),
     cache,
-    link
+    link,
   });
   apolloClient.apiBase = apiBase;
 
@@ -72,13 +77,13 @@ export const initApolloClient = (apolloOptions: WebUiApolloOptions): ApolloClien
     persistor = new CachePersistor({
       cache,
       storage: window.localStorage as any,
-      debug: process.env.NODE_ENV === 'development'
+      debug: process.env.NODE_ENV === 'development',
     });
     apolloClient.persistor = persistor;
   }
 
   apolloClient.onResetStore(async () => {
-    cache.restore(apollo.initialData ?? {})
+    cache.restore(apollo.initialData ?? {});
   });
 
   return apolloClient;
@@ -94,7 +99,7 @@ export const useApolloClient = (apolloOptions: WebUiApolloOptions) => {
 
   const client: ApolloClient<any> = initApolloClient(apolloOptions);
 
-  let persistor = (client as any).persistor;
+  const persistor = (client as any).persistor;
 
   useEffect(() => {
     async function initialize() {

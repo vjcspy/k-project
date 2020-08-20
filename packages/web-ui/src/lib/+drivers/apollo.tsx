@@ -2,7 +2,10 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import Head from 'next/head';
 import { isSSR } from '../util';
-import { initApolloClient, useApolloClient } from '../ui/apollo/use-apollo-client';
+import {
+  initApolloClient,
+  useApolloClient,
+} from '../ui/apollo/use-apollo-client';
 import { WebUiAdapterOptions } from '../types';
 import { NextPage } from 'next';
 
@@ -12,12 +15,15 @@ import { NextPage } from 'next';
  * @param adapterProps
  * @returns {React.ReactElement<any, any> | null}
  */
-export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdapterOptions) => {
+export const withApollo = (
+  PageComponent: NextPage<any>,
+  adapterProps: WebUiAdapterOptions
+) => {
   const {
     apollo = {
-      apiBase: process.env.NEXT_PUBLIC_APOLLO_API!
+      apiBase: process.env.NEXT_PUBLIC_APOLLO_API!,
     },
-    ssr = true
+    ssr = true,
   } = adapterProps;
   const apiBase = apollo.apiBase;
   /**
@@ -26,7 +32,7 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
    * @returns {React.ElementType | null}
    * @constructor
    */
-  const WithApollo: NextPage<any> = props => {
+  const WithApollo: NextPage<any> = (props) => {
     const { apollo, ...pageProps } = props;
 
     const [client] = useApolloClient({ ...apollo, apiBase });
@@ -40,7 +46,8 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
 
   // Set the correct displayName in development
   if (process.env.NODE_ENV !== 'production') {
-    const displayName = PageComponent.displayName || PageComponent.name || 'PageComponent';
+    const displayName =
+      PageComponent.displayName || PageComponent.name || 'PageComponent';
 
     if (displayName === 'App') {
       console.warn('This withApollo HOC only works with PageComponents.');
@@ -50,7 +57,7 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
   }
 
   if (ssr || PageComponent.getInitialProps) {
-    WithApollo.getInitialProps = async ctx => {
+    WithApollo.getInitialProps = async (ctx) => {
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProp`.
       const client = initApolloClient(apollo);
@@ -78,7 +85,7 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
               <ctx.AppTree
                 pageProps={{
                   ...pageProps,
-                  apollo: { client }
+                  apollo: { client },
                 }}
               />
             );
@@ -100,7 +107,7 @@ export const withApollo = (PageComponent: NextPage<any>, adapterProps: WebUiAdap
       return {
         ...pageProps,
         apollo: { initialData },
-        ssrComplete: true
+        ssrComplete: true,
       };
     };
   }
