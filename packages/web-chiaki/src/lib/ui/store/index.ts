@@ -5,3 +5,4 @@ export const reducer = combineReducers({
   app: chiakiAppReducer
 });
 export * from './state.index';
+export * from './actions.index';

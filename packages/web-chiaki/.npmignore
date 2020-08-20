@@ -5,7 +5,7 @@ tsconfig.module.json
 tslint.json
 .travis.yml
 .github
-.prettierignore
+../web/.prettierignore
 .vscode
 build/docs
 **/*.spec.*

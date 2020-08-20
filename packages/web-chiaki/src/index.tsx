@@ -1,9 +1,8 @@
 import React from 'react';
-import { reducerManager, WebUiComponentTree } from '@vjcspy/web-ui';
+import { WebUiComponentTree } from '@vjcspy/web-ui';
 import dynamic from 'next/dynamic';
 import { NextPage } from 'next';
 import BarPage from './lib/+pages/Bar';
-import { reducer } from './lib/ui/store';
 
 console.log('load web-chiaki');
 /*
@@ -48,5 +47,4 @@ const withChiakiUi = (Page: NextPage): NextPage<any> => {
   return WithChiakiUI;
 };
 
-reducerManager.add('chiaki', reducer);
 export default withChiakiUi;
