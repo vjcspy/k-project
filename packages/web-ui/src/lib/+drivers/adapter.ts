@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { WebUiAdapterOptions, WebUiPageDefaultProps } from '../types';
 import { withApollo } from './apollo';
+import { withStore } from './store';
 import { withUi } from './ui';
 
 export const withAdapter = (
@@ -12,5 +13,10 @@ export const withAdapter = (
     }
   }
 ): NextPage<WebUiPageDefaultProps> => {
-  return withUi(withApollo(PageComponent, webUiAdapterOptions), webUiAdapterOptions);
+  return withUi(
+    withApollo(
+      withStore(PageComponent),
+      webUiAdapterOptions
+    ),
+    webUiAdapterOptions);
 };

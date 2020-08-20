@@ -13,7 +13,7 @@ export const withUi = (PageComponent: NextPage<any>, webUiAdapterOptions: WebUiA
     );
   };
 
-  if (webUiAdapterOptions.ssr === true) {
+  if (webUiAdapterOptions.ssr === true || !!PageComponent.getInitialProps) {
     WithUi.getInitialProps = async context => {
       let pageProps = {};
       if (PageComponent.getInitialProps) {
