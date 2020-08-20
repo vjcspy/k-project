@@ -1,4 +1,4 @@
-import { Reducer, ReducersMapObject, createStore } from 'redux';
+import { Reducer, ReducersMapObject } from 'redux';
 import { appReducer } from './app/app.reducer';
 import { combineReducers } from '@reduxjs/toolkit';
 
@@ -70,10 +70,5 @@ function createReducerManager(initialReducers: ReducersMapObject<any, any>) {
 }
 
 export const reducerManager = createReducerManager(reducers);
+export const middleware = () => [];
 
-// Create a store with the root reducer function being the one exposed by the manager.
-export const store = createStore(reducerManager.reduce);
-
-// Optional: Put the reducer manager on the store so it is easily accessible
-// @ts-ignore
-store.reducerManager = reducerManager;

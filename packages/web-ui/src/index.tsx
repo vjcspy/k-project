@@ -42,9 +42,14 @@ WebUiComponentTree.registerComponent([
  */
 const withUi = (Page: NextPage): NextPage<any> => {
   // TODO: Create a context, wrapper ....
-  return pros => {
-    return <Page {...pros} />;
+  const WithUi: React.FC = props => {
+    return <Page {...props} />;
   };
+
+  const displayName = Page.displayName || Page.name || 'PageComponent';
+  WithUi.displayName = `withUi(${displayName})`;
+
+  return WithUi;
 };
 
 export default withUi;

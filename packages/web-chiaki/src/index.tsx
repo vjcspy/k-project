@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 import BarPage from './lib/+pages/Bar';
 import { reducer } from './lib/ui/store';
 
+console.log('load web-chiaki');
 /*
  * Declare chiaki component theme
  * */
@@ -37,9 +38,14 @@ WebUiComponentTree.registerComponent([
  */
 const withChiakiUi = (Page: NextPage): NextPage<any> => {
   // TODO: Create a context, wrapper ....
-  return pros => {
-    return <Page {...pros} />;
+  const WithChiakiUI: React.FC = props => {
+    return <Page {...props} />;
   };
+
+  const displayName = Page.displayName || Page.name || 'PageComponent';
+  WithChiakiUI.displayName = `withChiakiUi(${displayName})`;
+
+  return WithChiakiUI;
 };
 
 reducerManager.add('chiaki', reducer);

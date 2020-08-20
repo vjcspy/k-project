@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { chiakiReducer } from './chiaki/chiaki.reducer';
+import { chiakiAppReducer } from './app/app.reducer';
 
-export * from './state.index';
 export const reducer = combineReducers({
-  chiaki: chiakiReducer
+  app: chiakiAppReducer
 });
+export * from './state.index';
