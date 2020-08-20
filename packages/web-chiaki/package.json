@@ -25,12 +25,14 @@
     "node": ">=10.16.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "next": "latest",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.159",

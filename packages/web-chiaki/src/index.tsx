@@ -1,8 +1,9 @@
 import React from 'react';
-import { WebUiComponentTree } from '@vjcspy/web-ui';
+import { reducerManager, WebUiComponentTree } from '@vjcspy/web-ui';
 import dynamic from 'next/dynamic';
 import { NextPage } from 'next';
-import BarPage from './lib/pages/Bar';
+import BarPage from './lib/+pages/Bar';
+import { reducer } from './lib/ui/store';
 
 /*
  * Declare chiaki component theme
@@ -17,13 +18,13 @@ WebUiComponentTree.registerComponent([
   {
     uiId: 'chiaki_category_list',
     uiTags: ['bar_child1'],
-    component: dynamic(() => import('./lib/components/bed')),
+    component: dynamic(() => import('./lib/++components/bed')),
     priorityFn: () => 1
   },
   {
     uiId: 'chiaki_test',
     uiTags: ['bar_child3'],
-    component: dynamic(() => import('./lib/components/test')),
+    component: dynamic(() => import('./lib/++components/test')),
     priorityFn: () => 101
   }
 ]);
@@ -41,4 +42,5 @@ const withChiakiUi = (Page: NextPage): NextPage<any> => {
   };
 };
 
+reducerManager.add('chiaki', reducer);
 export default withChiakiUi;

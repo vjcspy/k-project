@@ -1,10 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decreaseCount, increaseCount } from '../../../store';
+import { AppState, decreaseCount, increaseCount } from '../../../store';
 
 export const selectAppCount = createSelector(
-  (state: any) => state.app.count,
+  (state: { app: AppState }) => state.app.count,
   count => count
 );
 

@@ -69,7 +69,7 @@ function createReducerManager(initialReducers: ReducersMapObject<any, any>) {
   };
 }
 
-const reducerManager = createReducerManager(reducers);
+export const reducerManager = createReducerManager(reducers);
 
 // Create a store with the root reducer function being the one exposed by the manager.
 export const store = createStore(reducerManager.reduce);
